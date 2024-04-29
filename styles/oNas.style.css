@@ -475,11 +475,11 @@ i.circle-selected-onHover .circle-line {
   border-radius: 30% 0 30% 0;
 }
 
-.companyLeaf.case1 {
+.companyLeaf.case1 .leaf-content {
   padding: 2.5rem;
 }
 
-.companyLeaf.case2 {
+.companyLeaf.case2 .leaf-content {
   padding: 10% 2.5rem 2.5rem 10%;
 }
 
@@ -549,7 +549,6 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
   background: #6ef083;
 }
 
@@ -559,7 +558,7 @@ i.circle-selected-onHover .circle-line {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 0;
+  padding: 4rem 6rem;
   color: #1e1e1e;
 }
 
@@ -615,8 +614,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%) !important;
   }
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
+  }
+  .greenLeaf .leaf-content {
+    padding: 3rem;
   }
   .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -647,6 +648,8 @@ i.circle-selected-onHover .circle-line {
     width: 100%;
     aspect-ratio: unset;
     min-height: 94vw;
+  }
+  .leafs-section-container .leaf-item .leaf-content {
     padding: 10% 2.5rem 2.5rem 10%;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
@@ -679,8 +682,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%);
   }
   .leafs-section-container .greenLeaf {
-    padding: 2rem 3rem;
     justify-content: center;
+  }
+  .leafs-section-container .greenLeaf .leaf-content {
+    padding: 2rem 3rem;
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -1366,6 +1371,9 @@ i.circle-selected-onHover .circle-line {
 @media only screen and (max-width: 767px) {
   #aboutUs-structure {
     flex-direction: column;
+    min-height: unset;
+    height: 100svh;
+    max-height: 800px;
   }
   #aboutUs-structure .structure-content {
     display: flex;
@@ -1378,7 +1386,7 @@ i.circle-selected-onHover .circle-line {
     display: flex;
     width: max-content;
     flex-grow: 1;
-    min-height: 20vh;
+    height: 100%;
     max-height: 50vh;
     border-bottom: 1px solid #1e1e1e;
     font: 500 32px/51px "Poppins";

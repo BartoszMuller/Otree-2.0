@@ -84,6 +84,7 @@ $font-b12-light: 300 12px $main-fontname;
 
 $font-mobile-footer-special: 300 94px $main-fontname;
 $font-mobile-h1-regular: 400 32px $main-fontname;
+$font-mobile-h1-light: 300 32px / 47px $main-fontname;
 $font-mobile-h2-regular: 500 28px / 56px $main-fontname;
 $font-mobile-h4-light: 300 24px $main-fontname;
 $font-mobile-b24-semibold: 600 24px $main-fontname;
@@ -92,6 +93,7 @@ $font-mobile-b24-regular: 400 24px $main-fontname;
 $font-mobile-b24-light: 300 24px $main-fontname;
 $font-mobile-b20-semibold: 600 20px $main-fontname;
 $font-mobile-b20-medium: 500 20px $main-fontname;
+$font-mobile-b20-regular: 400 20px $main-fontname;
 $font-mobile-b20-italic: italic 400 20px $main-fontname;
 $font-mobile-b19-medium: 500 19px $main-fontname;
 $font-mobile-b19-italic: italic 400 19px $main-fontname;
@@ -133,15 +135,15 @@ h2 {
   font: $font-h4-medium;
 }
 
-@media only screen and (max-width: 767px){
- h2{
-  font: $font-b24-medium;
- }
+@media only screen and (max-width: 767px) {
+  h2 {
+    font: $font-b24-medium;
+  }
 }
-  
-p {
-  letter-spacing: 0.02em;
-}
+
+// p {
+//   letter-spacing: 0.02em;
+// }
 
 section {
   display: flex;
@@ -283,27 +285,27 @@ u {
   }
 }
 
-i.circle-selected-onHover{
+i.circle-selected-onHover {
   position: relative;
   font-style: inherit;
 
-      .circle{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        height: 100%;
-        width: 100%;
-        transform: scale(1.3, 1.55);
-      }
+  .circle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.3, 1.55);
+  }
 
-      .circle-line{
-        stroke-dasharray: 402%;
-        stroke-dashoffset: 402%;
-        transition: all ease 1s;
-      }
+  .circle-line {
+    stroke-dasharray: 402%;
+    stroke-dashoffset: 402%;
+    transition: all ease 1s;
+  }
 }
 //
 // PRIMARY BUTTON //
@@ -384,18 +386,19 @@ i.circle-selected-onHover{
 
 //////////////////////
 
-.typeTextContainer {
+.typeTextAnimation {
   position: relative;
-}
-.typeTextAnimation.faded {
-  position: absolute;
-  height: 100%;
-  top: 0;
-  left: 0;
-  padding: inherit;
+  .faded {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: inherit;
 
-  opacity: 0.5;
-  font: inherit;
+    opacity: 0.5;
+    font: inherit;
+  }
 }
 ///
 ///// HERO SECTION
@@ -676,14 +679,15 @@ i.circle-selected-onHover{
 
 .companyLeaf {
   &.case1 {
-   
+    .leaf-content {
       padding: 2.5rem; // ASK
-    
+    }
   }
   &.case2 {
-    
+    .leaf-content {
       padding: 10% 2.5rem 2.5rem 10%; // ASK
-    
+    }
+
     .show-cs-button {
       align-self: flex-start;
     }
@@ -755,7 +759,6 @@ i.circle-selected-onHover{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
 
   background: $color-green-700;
 
@@ -766,7 +769,7 @@ i.circle-selected-onHover{
     align-items: flex-start;
     gap: 1.5rem;
 
-    padding: 0;
+    padding: 4rem 6rem;
 
     color: $color-dark;
   }
@@ -823,10 +826,10 @@ i.circle-selected-onHover{
   }
 
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
 
     .leaf-content {
+      padding: 3rem;
       .leaf-title {
         display: block;
 
@@ -851,7 +854,7 @@ i.circle-selected-onHover{
   .leafs-section-container {
     padding: 3.75rem 0.75rem;
 
-    .leafs-container{
+    .leafs-container {
       gap: 1rem;
     }
     .leaf-item {
@@ -859,14 +862,17 @@ i.circle-selected-onHover{
       width: 100%;
       aspect-ratio: unset;
       min-height: 94vw;
-      padding: 10% 2.5rem 2.5rem 10%;
+
+      .leaf-content {
+        padding: 10% 2.5rem 2.5rem 10%;
+      }
 
       &:nth-child(2n-1),
       &:nth-child(2n-1) img {
         border-radius: 0 30% 0 30%;
       }
-      &:nth-child(2n-1){
-        .leaf-showCS{
+      &:nth-child(2n-1) {
+        .leaf-showCS {
           align-self: flex-end;
         }
       }
@@ -875,13 +881,11 @@ i.circle-selected-onHover{
       &:nth-child(2n) img {
         border-radius: 30% 0 30% 0;
       }
-      &:nth-child(2n){
-        
-        .leaf-showCS{
+      &:nth-child(2n) {
+        .leaf-showCS {
           align-self: flex-start;
         }
       }
-      
 
       .leaf-content {
         opacity: 1;
@@ -902,10 +906,10 @@ i.circle-selected-onHover{
     }
 
     .greenLeaf {
-      padding: 2rem 3rem;
       justify-content: center;
 
       .leaf-content {
+        padding: 2rem 3rem;
         .leaf-title {
           display: block;
 
@@ -969,7 +973,6 @@ i.circle-selected-onHover{
   }
 }
 
-
 ///
 ///
 /////// WORK STEPS LIST
@@ -979,16 +982,17 @@ i.circle-selected-onHover{
 .workSteps-section-container {
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
 
   padding: 10.6rem 6.35rem 10.6rem 7rem;
+  margin: auto;
 }
 .workSteps-top {
   width: 30%;
   flex-grow: 1;
 
-  max-width: 1000px;
+  max-width: 500px;
 }
 .workSteps-title {
   font: $font-h5-medium;
@@ -1042,6 +1046,11 @@ i.circle-selected-onHover{
 }
 
 @media only screen and (max-width: 767px) {
+
+  .workSteps-content{
+    align-items: center;
+    justify-content: center;
+  }
   .workSteps-title {
     margin-left: 2rem;
   }

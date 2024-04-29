@@ -42,10 +42,6 @@ h2 {
   }
 }
 
-p {
-  letter-spacing: 0.02em;
-}
-
 section {
   display: flex;
   flex-direction: column;
@@ -234,11 +230,11 @@ i.circle-selected-onHover .circle-line {
   color: #ffffff;
 }
 
-.typeTextContainer {
+.typeTextAnimation {
   position: relative;
 }
 
-.typeTextAnimation.faded {
+.typeTextAnimation .faded {
   position: absolute;
   height: 100%;
   top: 0;
@@ -475,11 +471,11 @@ i.circle-selected-onHover .circle-line {
   border-radius: 30% 0 30% 0;
 }
 
-.companyLeaf.case1 {
+.companyLeaf.case1 .leaf-content {
   padding: 2.5rem;
 }
 
-.companyLeaf.case2 {
+.companyLeaf.case2 .leaf-content {
   padding: 10% 2.5rem 2.5rem 10%;
 }
 
@@ -549,7 +545,6 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
   background: #6ef083;
 }
 
@@ -559,7 +554,7 @@ i.circle-selected-onHover .circle-line {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 0;
+  padding: 4rem 6rem;
   color: #1e1e1e;
 }
 
@@ -615,8 +610,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%) !important;
   }
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
+  }
+  .greenLeaf .leaf-content {
+    padding: 3rem;
   }
   .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -647,6 +644,8 @@ i.circle-selected-onHover .circle-line {
     width: 100%;
     aspect-ratio: unset;
     min-height: 94vw;
+  }
+  .leafs-section-container .leaf-item .leaf-content {
     padding: 10% 2.5rem 2.5rem 10%;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
@@ -679,8 +678,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%);
   }
   .leafs-section-container .greenLeaf {
-    padding: 2rem 3rem;
     justify-content: center;
+  }
+  .leafs-section-container .greenLeaf .leaf-content {
+    padding: 2rem 3rem;
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -1238,251 +1239,97 @@ i.circle-selected-onHover .circle-line {
   }
 }
 
-#career-offers {
-  gap: 3.75rem;
-  padding: 5.45rem 9.15rem;
+.isCurrentWindow .circle-line {
+  stroke-dashoffset: 0 !important;
 }
 
-#career-offers .offers-list {
-  display: flex;
-  flex-direction: column;
+#offer-hero .hero-desc {
+  max-width: 650px;
 }
 
-#career-offers .offer-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-}
-
-#aboutUs-design {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap-reverse;
-  min-height: 100vh;
-  background: #e3e5e2;
-}
-
-#aboutUs-design .design-img {
-  position: relative;
-  flex-basis: 50%;
-  min-height: 400px;
-  height: auto;
-  flex-grow: 1;
-}
-
-#aboutUs-design .design-img img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#aboutUs-design .design-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  flex-basis: 50%;
-  flex-grow: 1;
-  min-width: 450px;
-  padding: 13.5rem 4rem;
-  color: #252525;
-}
-
-#aboutUs-design .design-content > * {
-  max-width: 600px;
-}
-
-#aboutUs-design .design-title {
-  font: 500 32px/51px "Poppins";
-  margin-bottom: 0.5rem;
-}
-
-#aboutUs-design .design-subtitle {
-  font: italic 400 28px "Poppins";
-  margin-bottom: 2.75rem;
-}
-
-#aboutUs-design .design-desc {
-  margin-bottom: 3.25rem;
-  font: 400 17px/29px "Poppins";
-}
-
-#aboutUs-design .design-subdesc {
-  font: 300 17px/29px "Poppins";
+#offer-hero .hero-subtitle {
+  padding: 0.75rem 0 0.25rem;
 }
 
 @media only screen and (max-width: 767px) {
-  #aboutUs-design .design-img {
-    width: 100%;
-    min-height: 500px;
+  #offer-hero .hero-siteName {
+    padding-bottom: 0.5rem;
   }
-  #aboutUs-design .design-content {
-    flex-basis: 100%;
-    min-width: unset;
-    padding: 2.5rem 0.75rem;
-  }
-  #aboutUs-design .design-title {
-    font: 500 24px "Poppins";
-    margin-bottom: 2rem;
-  }
-  #aboutUs-design .design-subtitle {
-    font: italic 400 19px "Poppins";
-    margin-bottom: 2rem;
-  }
-  #aboutUs-design .design-desc {
-    margin-bottom: 3.25rem;
-    font: 400 17px "Poppins";
-  }
-  #aboutUs-design .design-subdesc {
-    font: 400 17px "Poppins";
-  }
-}
-
-#aboutUs-structure {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  min-height: 100svh;
-  background: #6ef083;
-}
-
-#aboutUs-structure .structure-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  flex-grow: 1;
-  flex-basis: 45%;
-  padding: 5.75rem 7rem;
-}
-
-#aboutUs-structure .structure-title {
-  display: flex;
-  width: max-content;
-  height: 50%;
-  min-height: 30vh;
-  border-bottom: 1px solid #1e1e1e;
-  font: 500 32px/51px "Poppins";
-}
-
-#aboutUs-structure .structure-desc {
-  max-width: 775px;
-  font: 400 17px/29px "Poppins";
-}
-
-#aboutUs-structure .structure-img {
-  align-self: center;
-  padding: 4.5rem;
-  width: 55%;
-  height: 100%;
-  min-width: 550px;
-}
-
-@media only screen and (max-width: 767px) {
-  #aboutUs-structure {
-    flex-direction: column;
-  }
-  #aboutUs-structure .structure-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.6rem;
-    width: 100%;
-    padding: 3rem 0.75rem 2.4rem;
-  }
-  #aboutUs-structure .structure-title {
-    display: flex;
-    width: max-content;
-    flex-grow: 1;
-    min-height: 20vh;
-    max-height: 50vh;
-    border-bottom: 1px solid #1e1e1e;
-    font: 500 32px/51px "Poppins";
-  }
-  #aboutUs-structure .structure-desc {
-    max-width: 775px;
-    font: 400 18px "Poppins";
-  }
-  #aboutUs-structure .structure-img {
+  #offer-hero .hero-desc {
     display: none;
   }
 }
 
-#aboutUs-founders {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  min-height: 100vh;
+.typingText-section-container {
+  padding: 6rem 13rem;
 }
 
-#aboutUs-founders .founders-title {
-  width: 100%;
-  font: 500 32px/51px "Poppins";
-  padding: 4.4rem 7.25rem 2rem;
-  align-self: flex-end;
+.typingText-section-container .typeTextAnimation {
+  font: 300 32px/62px "Poppins";
 }
 
-#aboutUs-founders .founders-images {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: auto;
+@media only screen and (max-width: 767px) {
+  .typingText-section-container {
+    padding: 2.5rem 0.75rem;
+  }
+  .typingText-section-container .typeTextAnimation {
+    font: 300 24px "Poppins";
+  }
 }
 
-#aboutUs-founders .founder-img {
-  width: 50%;
-  flex-grow: 1;
-  aspect-ratio: 1.35;
-  object-fit: cover;
+#offer-typingText2 {
+  position: relative;
 }
 
-#aboutUs-founders .founders-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  width: 100%;
-  padding: 4rem;
-  margin: auto;
-  text-align: center;
+#offer-typingText2::before {
+  content: url("/assets/vectors/dawn.svg");
+  position: absolute;
+  left: 0;
+  top: 4rem;
+  z-index: -1;
 }
 
-#aboutUs-founders .founders-names {
-  font: 500 28px "Poppins";
+@media only screen and (max-width: 767px) {
+  #offer-typingText2::before {
+    display: none;
+  }
 }
 
-#aboutUs-founders .founders-readMore {
-  font: 500 16px "Poppins";
-  transition: color ease 0.5s;
+#offer-analysis {
+  background: #e3e5e2;
 }
 
-#aboutUs-founders .founders-readMore:hover {
+#offer-analysis .analysis-steps .workStep-item > * {
+  transition: all ease 0.8s;
+}
+
+#offer-analysis .analysis-steps .workStep-item:hover {
+  cursor: default;
+}
+
+#offer-analysis .analysis-steps .workStep-item:hover::before {
+  background: #ff5e21;
+}
+
+#offer-analysis .analysis-steps .workStep-item:hover .workStep-title {
   color: #ff5e21;
 }
 
 @media only screen and (max-width: 767px) {
-  #aboutUs-founders {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    min-height: 100vh;
+  #offer-analysis .analysis-title.circle-selected::before {
+    display: none;
   }
-  #aboutUs-founders .founders-title {
-    width: 100%;
-    font: 500 24px "Poppins";
-    padding: 2.4rem 0.75rem 1.15rem;
-  }
-  #aboutUs-founders .founder-img {
-    width: 100%;
-  }
-  #aboutUs-founders .founders-info {
-    padding: 1.5rem 3rem 3.75rem;
-  }
-  #aboutUs-founders .founders-names {
-    font: 500 20px "Poppins";
-  }
-  #aboutUs-founders .founders-readMore {
-    font: 500 16px "Poppins";
-  }
+}
+
+#offer-design {
+  background: #6ef083;
+}
+
+#offer-implement {
+  background: #ff5e21;
+  color: #ffffff;
+}
+
+#offer-implement .implement-steps .workStep-item::before {
+  background: #ffffff;
 }

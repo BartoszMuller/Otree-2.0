@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", function () {
 const elementsToCheck = [
   ...document.getElementsByClassName("onFirstTimeView"),
 ];
@@ -15,7 +16,7 @@ elementsToCheck.forEach((currentElement) => {
     }
   };
 
-  document.addEventListener("DOMContentLoaded", function () {
+  
     window.addEventListener("scroll", onScrollSection);
   });
 });

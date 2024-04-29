@@ -36,8 +36,10 @@ h2 {
   font: 500 32px/51px "Poppins";
 }
 
-p {
-  letter-spacing: 0.02em;
+@media only screen and (max-width: 767px) {
+  h2 {
+    font: 500 24px "Poppins";
+  }
 }
 
 section {
@@ -53,7 +55,7 @@ section {
 
 @media only screen and (min-width: 768px) {
   .showOnMobile {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -68,9 +70,6 @@ section {
 @media only screen and (max-width: 767px) {
   .hideOnMobile {
     display: none !important;
-  }
-  .showOnMobile {
-    display: block;
   }
   .section-container {
     padding: 4rem 0.75rem;
@@ -231,12 +230,13 @@ i.circle-selected-onHover .circle-line {
   color: #ffffff;
 }
 
-.typeTextContainer {
+.typeTextAnimation {
   position: relative;
 }
 
-.typeTextAnimation.faded {
+.typeTextAnimation .faded {
   position: absolute;
+  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -472,11 +472,11 @@ i.circle-selected-onHover .circle-line {
   border-radius: 30% 0 30% 0;
 }
 
-.companyLeaf.case1 {
+.companyLeaf.case1 .leaf-content {
   padding: 2.5rem;
 }
 
-.companyLeaf.case2 {
+.companyLeaf.case2 .leaf-content {
   padding: 10% 2.5rem 2.5rem 10%;
 }
 
@@ -546,7 +546,6 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
   background: #6ef083;
 }
 
@@ -556,7 +555,7 @@ i.circle-selected-onHover .circle-line {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 0;
+  padding: 4rem 6rem;
   color: #1e1e1e;
 }
 
@@ -612,8 +611,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%) !important;
   }
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
+  }
+  .greenLeaf .leaf-content {
+    padding: 3rem;
   }
   .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -636,11 +637,16 @@ i.circle-selected-onHover .circle-line {
   .leafs-section-container {
     padding: 3.75rem 0.75rem;
   }
+  .leafs-section-container .leafs-container {
+    gap: 1rem;
+  }
   .leafs-section-container .leaf-item {
     min-width: unset;
     width: 100%;
     aspect-ratio: unset;
     min-height: 94vw;
+  }
+  .leafs-section-container .leaf-item .leaf-content {
     padding: 10% 2.5rem 2.5rem 10%;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
@@ -673,8 +679,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%);
   }
   .leafs-section-container .greenLeaf {
-    padding: 2rem 3rem;
     justify-content: center;
+  }
+  .leafs-section-container .greenLeaf .leaf-content {
+    padding: 2rem 3rem;
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -740,7 +748,7 @@ i.circle-selected-onHover .circle-line {
 .workSteps-top {
   width: 30%;
   flex-grow: 1;
-  max-width: 1000px;
+  max-width: 500px;
 }
 
 .workSteps-title {
@@ -1405,10 +1413,10 @@ i.circle-selected-onHover .circle-line {
     max-width: 480px;
     font: 400 17px "Poppins";
   }
-  #home-hero .hero-content .hero-desc .circle-selected {
+  #home-hero .hero-content .hero-desc .circle-selected-green {
     white-space: wrap;
   }
-  #home-hero .hero-content .hero-desc .circle-selected::before {
+  #home-hero .hero-content .hero-desc .circle-selected-green::before {
     display: none;
   }
   #home-hero .hero-bottom {
@@ -1528,14 +1536,15 @@ i.circle-selected-onHover .circle-line {
   gap: 8rem;
   row-gap: 2.75rem;
   width: 100%;
+  padding-top: 4.5rem;
   min-width: 660px;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: auto;
 }
 
 #home-trustedUs .trustedUs-logos img {
+  width: 140px;
   object-fit: contain;
-  width: 150px;
   filter: grayscale(1);
   transition: all 0.5s;
 }
@@ -1546,14 +1555,14 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   #home-trustedUs .trustedUs-logos {
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 3.5rem;
     row-gap: 2rem;
     min-width: unset;
     max-width: 400px;
   }
   #home-trustedUs .trustedUs-logos img {
-    width: 40%;
+    width: 30%;
     min-width: 100px;
     max-width: 150px;
   }
@@ -1718,7 +1727,7 @@ i.circle-selected-onHover .circle-line {
 #home-workType .workType-img {
   position: relative;
   width: 46%;
-  min-height: 210px;
+  min-height: 300px;
   height: auto;
   flex-grow: 1;
 }
@@ -1797,9 +1806,15 @@ i.circle-selected-onHover .circle-line {
 }
 
 @media only screen and (max-width: 767px) {
+  #home-workType {
+    max-height: unset;
+    height: unset;
+  }
   #home-workType .workType-content {
     padding: 2.5rem 0.75rem;
     min-width: 64%;
+    height: 100vh;
+    max-height: 900px;
   }
   #home-workType .workType-content .workType-title {
     font: 500 24px "Poppins";
@@ -1849,6 +1864,15 @@ i.circle-selected-onHover .circle-line {
   width: 3.75rem;
   transition: all 1s;
   overflow: visible;
+}
+
+#home-ourValues .ourValues-content .value-name {
+  padding: 1rem 0 1.5rem;
+  font: 600 20px "Poppins";
+}
+
+#home-ourValues .ourValues-content .value-desc {
+  font: 300 16px "Poppins";
 }
 
 #home-ourValues .ourValues-content .value-icon-1 > * {
@@ -1986,15 +2010,6 @@ i.circle-selected-onHover .circle-line {
 
 #home-ourValues .ourValues-content .value-item:hover .value-icon-6 .heart-4 {
   transform: translate(-98%, -28%) scale(1.1);
-}
-
-#home-ourValues .value-name {
-  padding: 1rem 0 1.5rem;
-  font: 600 20px "Poppins";
-}
-
-#home-ourValues .value-desc {
-  font: 300 16px "Poppins";
 }
 
 @media only screen and (max-width: 767px) {

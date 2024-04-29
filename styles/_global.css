@@ -42,10 +42,6 @@ h2 {
   }
 }
 
-p {
-  letter-spacing: 0.02em;
-}
-
 section {
   display: flex;
   flex-direction: column;
@@ -234,12 +230,13 @@ i.circle-selected-onHover .circle-line {
   color: #ffffff;
 }
 
-.typeTextContainer {
+.typeTextAnimation {
   position: relative;
 }
 
-.typeTextAnimation.faded {
+.typeTextAnimation .faded {
   position: absolute;
+  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -475,11 +472,11 @@ i.circle-selected-onHover .circle-line {
   border-radius: 30% 0 30% 0;
 }
 
-.companyLeaf.case1 {
+.companyLeaf.case1 .leaf-content {
   padding: 2.5rem;
 }
 
-.companyLeaf.case2 {
+.companyLeaf.case2 .leaf-content {
   padding: 10% 2.5rem 2.5rem 10%;
 }
 
@@ -549,7 +546,6 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
   background: #6ef083;
 }
 
@@ -559,7 +555,7 @@ i.circle-selected-onHover .circle-line {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 0;
+  padding: 4rem 6rem;
   color: #1e1e1e;
 }
 
@@ -615,8 +611,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%) !important;
   }
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
+  }
+  .greenLeaf .leaf-content {
+    padding: 3rem;
   }
   .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -647,6 +645,8 @@ i.circle-selected-onHover .circle-line {
     width: 100%;
     aspect-ratio: unset;
     min-height: 94vw;
+  }
+  .leafs-section-container .leaf-item .leaf-content {
     padding: 10% 2.5rem 2.5rem 10%;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
@@ -679,8 +679,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%);
   }
   .leafs-section-container .greenLeaf {
-    padding: 2rem 3rem;
     justify-content: center;
+  }
+  .leafs-section-container .greenLeaf .leaf-content {
+    padding: 2rem 3rem;
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -738,15 +740,16 @@ i.circle-selected-onHover .circle-line {
 .workSteps-section-container {
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
   padding: 10.6rem 6.35rem 10.6rem 7rem;
+  margin: auto;
 }
 
 .workSteps-top {
   width: 30%;
   flex-grow: 1;
-  max-width: 1000px;
+  max-width: 500px;
 }
 
 .workSteps-title {
@@ -801,6 +804,10 @@ i.circle-selected-onHover .circle-line {
 }
 
 @media only screen and (max-width: 767px) {
+  .workSteps-content {
+    align-items: center;
+    justify-content: center;
+  }
   .workSteps-title {
     margin-left: 2rem;
   }
