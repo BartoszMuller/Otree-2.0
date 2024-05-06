@@ -6,10 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   elementsToCheck.forEach((currentElement) => {
     const onScrollSection = () => {
       const elementOffset = currentElement.getBoundingClientRect();
-      if (
-        elementOffset.top <= window.innerHeight / 1.8 &&
-        elementOffset.bottom >= window.innerHeight / 1.8
-      ) {
+      const viewPoint = window.innerHeight / 2;
+      if (elementOffset.top <= viewPoint && elementOffset.bottom >= viewPoint) {
         currentElement.classList.add("isCurrentWindow");
       } else {
         currentElement.classList.remove("isCurrentWindow");

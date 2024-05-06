@@ -26,6 +26,7 @@ html {
   font-size: 16px;
   font-family: "Poppins";
   scroll-behavior: smooth;
+  letter-spacing: 0.02em;
 }
 
 h1 {
@@ -115,12 +116,27 @@ section {
   background-color: #545454;
 }
 
+.hiddenScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hiddenScrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 u {
   position: relative;
   white-space: nowrap;
   text-decoration: none;
   font-weight: inherit;
   font-style: inherit;
+  z-index: -1;
+}
+
+u + span {
+  position: relative;
+  z-index: 1;
 }
 
 u::before {
@@ -271,7 +287,7 @@ i.circle-selected-onHover .circle-line {
 
 .hero-header .logo {
   flex-shrink: 0;
-  width: 7rem;
+  width: 6.6rem;
 }
 
 .hero-nav {
@@ -326,7 +342,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 .hero-nav .menu-icon img {
-  width: 1.5rem;
+  height: 1rem;
 }
 
 .hero-content {
@@ -368,6 +384,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 .hero-bottom {
+  padding: 1rem 1.5rem;
   margin: auto;
   font: 300 14px "Poppins";
 }
@@ -426,6 +443,9 @@ i.circle-selected-onHover .circle-line {
   }
   .hero-section .hero-content .hero-subtitle {
     font: italic 300 17px "Poppins";
+  }
+  .hero-section .hero-bottom {
+    margin-right: 0;
   }
 }
 
@@ -598,9 +618,6 @@ i.circle-selected-onHover .circle-line {
   .leaf-item .leaf-content {
     opacity: 1 !important;
   }
-  .leaf-item .leaf-content .leaf-title {
-    font: 600 20px "Poppins";
-  }
   .leaf-item .leaf-content .leaf-buttons {
     font: 300 12px "Poppins";
   }
@@ -616,15 +633,6 @@ i.circle-selected-onHover .circle-line {
   .greenLeaf .leaf-content {
     padding: 3rem;
   }
-  .greenLeaf .leaf-content .leaf-title {
-    display: block;
-    width: 70%;
-    margin-right: auto;
-    font: 500 19px "Poppins";
-  }
-  .greenLeaf .leaf-content .leaf-title .title-number {
-    font: 500 19px "Poppins";
-  }
   .greenLeaf .leaf-content .leaf-desc {
     font: 400 15px "Poppins";
   }
@@ -635,10 +643,10 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 800px) {
   .leafs-section-container {
-    padding: 3.75rem 0.75rem;
+    padding: 3.75rem 0.25rem;
   }
   .leafs-section-container .leafs-container {
-    gap: 1rem;
+    gap: 0.5rem;
   }
   .leafs-section-container .leaf-item {
     min-width: unset;
@@ -666,9 +674,6 @@ i.circle-selected-onHover .circle-line {
   .leafs-section-container .leaf-item .leaf-content {
     opacity: 1;
   }
-  .leafs-section-container .leaf-item .leaf-content .leaf-title {
-    font: 600 20px "Poppins";
-  }
   .leafs-section-container .leaf-item .leaf-content .leaf-buttons {
     font: 300 12px "Poppins";
   }
@@ -683,15 +688,6 @@ i.circle-selected-onHover .circle-line {
   }
   .leafs-section-container .greenLeaf .leaf-content {
     padding: 2rem 3rem;
-  }
-  .leafs-section-container .greenLeaf .leaf-content .leaf-title {
-    display: block;
-    width: 70%;
-    margin-right: auto;
-    font: 500 19px "Poppins";
-  }
-  .leafs-section-container .greenLeaf .leaf-content .leaf-title .title-number {
-    font: 500 19px "Poppins";
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-desc {
     font: 400 15px "Poppins";
@@ -740,9 +736,10 @@ i.circle-selected-onHover .circle-line {
 .workSteps-section-container {
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
   padding: 10.6rem 6.35rem 10.6rem 7rem;
+  margin: auto;
 }
 
 .workSteps-top {
@@ -803,6 +800,10 @@ i.circle-selected-onHover .circle-line {
 }
 
 @media only screen and (max-width: 767px) {
+  .workSteps-content {
+    align-items: center;
+    justify-content: center;
+  }
   .workSteps-title {
     margin-left: 2rem;
   }
@@ -871,6 +872,7 @@ i.circle-selected-onHover .circle-line {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  height: 2rem;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option input {
@@ -878,24 +880,28 @@ i.circle-selected-onHover .circle-line {
   position: absolute;
   z-index: 0;
   width: 100%;
-  height: 2rem;
   margin: auto;
-  border: 1px dashed #545454;
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
   color: #ffffff;
-}
-
-.contactForm-content .contactForm-topics .topics-options .topic-option input:checked {
-  background: #ff5e21;
-  border: 1px solid #ff5e21;
+  transition: border 0.5s;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option input:checked + label {
   color: #ffffff;
+  background: #ff5e21;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option input:checked + label svg {
+  display: none;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option input:not(:checked):hover + label svg {
+  animation: moveDashedBorder 0.25s infinite linear;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option label {
+  position: relative;
   z-index: 2;
   display: flex;
   padding: 0.5rem 2rem;
@@ -904,6 +910,17 @@ i.circle-selected-onHover .circle-line {
   color: #1e1e1e;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option label svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.2s;
+  stroke-dasharray: 4;
+  stroke-dashoffset: 0;
 }
 
 .contactForm-content .contactForm-input {
@@ -1192,6 +1209,26 @@ i.circle-selected-onHover .circle-line {
   }
 }
 
+.rowWave > * {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.UpDownIn {
+  animation: UpDown 0.8s ease-in-out forwards;
+}
+
+@keyframes UpDown {
+  50% {
+    opacity: 1;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}
+
 @keyframes movinGradient {
   0% {
     background-position: 0% 50%;
@@ -1240,6 +1277,12 @@ i.circle-selected-onHover .circle-line {
   }
 }
 
+@keyframes moveDashedBorder {
+  to {
+    stroke-dashoffset: 8;
+  }
+}
+
 #home-hero {
   position: relative;
   display: flex;
@@ -1254,21 +1297,27 @@ i.circle-selected-onHover .circle-line {
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
-  gap: 2.815rem;
+  gap: 0rem;
+}
+
+#home-hero .hero-content .hero-title {
+  font: 400 55px/79px "Poppins";
 }
 
 #home-hero .hero-content .hero-desc {
   max-width: 705px;
+  margin-top: 2.81rem;
   font: 400 20px "Poppins";
 }
 
 #home-hero .hero-content .hero-desc .circle-selected-green::before {
-  transform: scaleX(1.1) scaleY(1.5);
+  transform: scaleX(1.06) scaleY(1.5);
 }
 
 #home-hero .hero-content .hero-trustedUs {
   display: flex;
   gap: 0.2rem;
+  margin-top: 2.25rem;
   font: 400 14px "Poppins";
 }
 
@@ -1285,6 +1334,7 @@ i.circle-selected-onHover .circle-line {
 #home-hero .hero-content .hero-logos {
   display: flex;
   gap: 0.5rem;
+  margin-top: 1.5rem;
   height: 2.75rem;
 }
 
@@ -1402,7 +1452,8 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   #home-hero .hero-content {
-    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0;
   }
   #home-hero .hero-content .hero-title {
     width: 100%;
@@ -1418,12 +1469,6 @@ i.circle-selected-onHover .circle-line {
   }
   #home-hero .hero-content .hero-desc .circle-selected-green::before {
     display: none;
-  }
-  #home-hero .hero-bottom {
-    margin-right: 0;
-  }
-  #home-hero .hero-bottom a {
-    padding: 2rem;
   }
 }
 
@@ -1442,8 +1487,8 @@ i.circle-selected-onHover .circle-line {
   width: 4rem;
   height: 25rem;
   border-top-left-radius: 3rem;
-  border-top: 1px solid #1e1e1e;
-  border-left: 1px solid #1e1e1e;
+  border-top: 1px solid #545454;
+  border-left: 1px solid #545454;
 }
 
 #home-caseStudy .background-lines::after {
@@ -1454,8 +1499,8 @@ i.circle-selected-onHover .circle-line {
   width: 3rem;
   height: 56%;
   border-top-right-radius: 3rem;
-  border-top: 1px solid #1e1e1e;
-  border-right: 1px solid #1e1e1e;
+  border-top: 1px solid #545454;
+  border-right: 1px solid #545454;
 }
 
 #home-caseStudy .background-lines .line-1 {
@@ -1470,6 +1515,8 @@ i.circle-selected-onHover .circle-line {
 #home-caseStudy .caseStudy-title {
   font: 500 28px "Poppins";
   color: #1e1e1e;
+  position: relative;
+  z-index: 1;
 }
 
 #home-caseStudy .leaf-item.onFirstTimeView {
@@ -1514,9 +1561,9 @@ i.circle-selected-onHover .circle-line {
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 800px) {
   #home-caseStudy .caseStudy-title {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     font: 500 24px "Poppins";
   }
 }
@@ -1569,6 +1616,9 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-aboutWork {
+  position: relative;
+  justify-content: center;
+  min-height: 100svh;
   padding: 8.8rem 6.5rem;
   background: #6ef083;
 }
@@ -1578,10 +1628,21 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-aboutWork .aboutWork-desc {
-  margin: auto;
   width: 100%;
   padding: 6.5rem 7.5rem;
   font: 500 32px/51px "Poppins";
+}
+
+#home-aboutWork::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 30vh;
+  width: 3rem;
+  border-left: 1px solid #545454;
+  border-top: 1px solid #545454;
+  border-top-left-radius: 50px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1592,9 +1653,15 @@ i.circle-selected-onHover .circle-line {
     font: 400 24px "Poppins";
   }
   #home-aboutWork .aboutWork-desc {
-    margin: auto;
     padding: 2.5rem 0 0;
     font: 500 24px "Poppins";
+  }
+  #home-aboutWork .aboutWork-desc .circle-selected::before {
+    background: url("/assets/vectors/ecom-dark-circle.svg");
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(1.1) scaleY(1.2);
   }
 }
 
@@ -1740,6 +1807,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-workType .workType-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1752,9 +1820,21 @@ i.circle-selected-onHover .circle-line {
   animation: movinGradient 7s ease infinite;
 }
 
+#home-workType .workType-content::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 65%;
+  width: 3rem;
+  border-left: 1px solid #545454;
+  border-top: 1px solid #545454;
+  border-top-left-radius: 50px;
+}
+
 #home-workType .workType-content .workType-title {
   white-space: nowrap;
-  font: 500 24px "Poppins";
+  font: 500 32px/51px "Poppins";
 }
 
 #home-workType .workType-content .workType-title .special {
@@ -1793,8 +1873,9 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-workType .workType-content .workType-bottom-content .workType-button .circle-arrow {
-  min-width: 3.5rem;
-  rotate: -45deg;
+  margin-top: 1.5rem;
+  min-width: 4.5rem;
+  rotate: -38.65deg;
 }
 
 #home-workType .workType-content .workType-bottom-content .workType-button .circle-arrow > * {
@@ -1815,6 +1896,9 @@ i.circle-selected-onHover .circle-line {
     min-width: 64%;
     height: 100vh;
     max-height: 900px;
+  }
+  #home-workType .workType-content::before {
+    display: none;
   }
   #home-workType .workType-content .workType-title {
     font: 500 24px "Poppins";
@@ -1853,6 +1937,7 @@ i.circle-selected-onHover .circle-line {
 
 #home-ourValues .ourValues-content .value-item {
   display: flex;
+  align-items: baseline;
   flex-direction: column;
   min-width: 250px;
   width: 25%;
@@ -1861,7 +1946,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-ourValues .ourValues-content .value-icon {
-  width: 3.75rem;
+  height: 3.75rem;
   transition: all 1s;
   overflow: visible;
 }
@@ -1905,7 +1990,7 @@ i.circle-selected-onHover .circle-line {
 
 #home-ourValues .ourValues-content .value-icon-3 {
   width: 5rem;
-  height: 2.3rem;
+  padding: 0.5rem 0 0.5rem;
 }
 
 #home-ourValues .ourValues-content .value-icon-3 > * {

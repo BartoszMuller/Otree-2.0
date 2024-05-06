@@ -16,11 +16,10 @@
       rel="stylesheet"
     />
 
-    <!-- jQuery SCrollorama -->
+    <!-- jQuery Scrollorama -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="ścieżka/do/superscrollorama.js"></script>
-
   </head>
   <body>
     <div class="container">
@@ -54,7 +53,7 @@
               </li>
             </ul>
             <div class="menu-icon">
-              <img src="assets/icons/menu-icon.svg" alt="menu icon" />
+              <img src="assets/icons/menu.svg" alt="menu icon" />
             </div>
           </nav>
         </header>
@@ -68,7 +67,7 @@
             i funkcjonalne rozwiązania digitalowe.<br class="hideOnMobile" />
             Jesteśmy
             <u class="circle-selected-green"
-              >ekspertami w sektorach B2B i B2C.</u
+              ><span>ekspertami w sektorach B2B i B2C.</span></u
             >
           </p>
           <div class="hero-trustedUs hideOnMobile">
@@ -152,14 +151,17 @@
 
       <section id="home-caseStudy" class="leafs-section-container">
         <div class="background-lines hideOnMobile">
-          <div class="line-1">
-          </div>
+          <div class="line-1"></div>
         </div>
-        <h2 class="caseStudy-title">
-          <u class="circle-selected">Kreatywność i wiedza</u>
-          branżowa<br />
-          w jednym projekcie
-        </h2>
+        <div>
+          <h2 class="caseStudy-title">
+            <u class="circle-selected-gray">Kreatywność i wiedza</u>
+            <span
+              >branżowa<br />
+              w jednym projekcie</span
+            >
+          </h2>
+        </div>
         <div class="leafs-container">
           <div class="leaf-item case1 companyLeaf">
             <img
@@ -235,7 +237,7 @@
       </section>
       <section id="home-trustedUs" class="section-container">
         <h2 class="trustedUs-title">Zaufali nam</h2>
-        <div class="trustedUs-logos">
+        <div class="trustedUs-logos rowWave">
           <img src="/assets/logos/techwish.svg" alt="Techwish logo" />
           <img src="/assets/logos/davines.svg" alt="Davines logo" />
           <img src="/assets/logos/tim.svg" alt="TIM logo" />
@@ -258,19 +260,13 @@
         </div>
       </section>
       <section id="home-aboutWork" class="section-container">
-        <h2 class="aboutWork-title">Co robimy</h2>
-          <p class=" aboutWork-desc section-content-container typeTextAnimation">
-            Tworzymy skuteczne systemy e‑commerce, harmonizując innowacyjne
-            podejście do projektowania z głębokim zrozumieniem branży. Dokładnie
-            analizujemy procesy sprzedażowe, aby efektywnie wspierać naszych
-            klientów.
-          </p>
-          <!-- <p class="faded">
-            Tworzymy skuteczne systemy e-commerce, harmonizując innowacyjne
-            podejście do projektowania z głębokim zrozumieniem branży. Dokładnie
-            analizujemy procesy sprzedażowe, aby efektywnie wspierać naszych
-            klientów.
-          </p> -->
+        <h2 class="aboutWork-title">Co robimy?</h2>
+        <p class="aboutWork-desc section-content-container typeTextAnimation">
+          Tworzymy skuteczne systemy <u class="circle-selected">e‑commerce,</u>
+          harmonizując innowacyjne podejście do projektowania z głębokim
+          zrozumieniem branży. Dokładnie analizujemy procesy sprzedażowe, aby
+          efektywnie wspierać naszych klientów.
+        </p>
       </section>
 
       <section id="home-howWeWork" class="section-container">
@@ -488,8 +484,7 @@
             <p class="workType-desc">
               Działamy jako zwinny zespół z wdrożonymi elementami organizacji
               turkusowej. Dzięki temu każdy ma głos i jest słyszany. Ta
-              otwartość procentuje
-              <strong>w otwartej i elastycznej współpracy</strong> z naszymi
+              otwartość procentuje w otwartej i elastycznej współpracy z naszymi
               klientami.
             </p>
             <a class="workType-button" href=""
@@ -507,18 +502,21 @@
                   width="44"
                   height="44"
                   rx="22"
+                  stroke-width="0.7"
                   stroke="white"
                 />
                 <path
                   class="arrow-line"
                   d="M12 23.0003H33"
                   stroke="white"
+                  stroke-width="0.7"
                   stroke-linecap="round"
                 />
                 <path
                   class="arrow-line"
                   d="M26 30L33 23L26 16"
                   stroke="white"
+                  stroke-width="0.7"
                   stroke-linecap="round"
                 />
                 <!-- <rect
@@ -548,7 +546,7 @@
       </section>
       <section id="home-ourValues" class="section-container">
         <h2 class="ourValues-title">Nasze wartości</h2>
-        <div class="ourValues-content section-content-container">
+        <div class="ourValues-content section-content-container rowWave">
           <div class="value-item onWindowCurrency">
             <svg
               class="value-icon value-icon-1"
@@ -878,7 +876,20 @@
                   id="contactForm-analiza"
                   name="contactForm-topic-option"
                   value="contactForm-analiza"
-                /><label for="contactForm-analiza">Analiza</label>
+                /><label for="contactForm-analiza"
+                  >Analiza
+                  <svg
+                    preserveAspectRatio="none"
+                    viewBox="0 0 168 45"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M45 0.5H167.497C167.229 24.8463 147.41 44.5 123 44.5H0.502751C0.770785 20.1537 20.5902 0.5 45 0.5Z"
+                      stroke="black"
+                    />
+                  </svg>
+                </label>
               </div>
               <div class="topic-option">
                 <input
@@ -886,7 +897,20 @@
                   id="contactForm-projektowanie"
                   name="contactForm-topic-option"
                   value="contactForm-projektowanie"
-                /><label for="contactForm-projektowanie">Projektowanie</label>
+                /><label for="contactForm-projektowanie"
+                  >Projektowanie
+                  <svg
+                    preserveAspectRatio="none"
+                    viewBox="0 0 168 45"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M45 0.5H167.497C167.229 24.8463 147.41 44.5 123 44.5H0.502751C0.770785 20.1537 20.5902 0.5 45 0.5Z"
+                      stroke="black"
+                    />
+                  </svg>
+                </label>
               </div>
 
               <div class="topic-option">
@@ -895,7 +919,20 @@
                   id="contactForm-wdrozenie"
                   name="contactForm-topic-option"
                   value="contactForm-wdrozenie"
-                /><label for="contactForm-wdrozenie">Wdrożenie</label>
+                /><label for="contactForm-wdrozenie"
+                  >Wdrożenie
+                  <svg
+                    preserveAspectRatio="none"
+                    viewBox="0 0 168 45"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M45 0.5H167.497C167.229 24.8463 147.41 44.5 123 44.5H0.502751C0.770785 20.1537 20.5902 0.5 45 0.5Z"
+                      stroke="black"
+                    />
+                  </svg>
+                </label>
               </div>
               <div class="topic-option">
                 <input
@@ -903,7 +940,20 @@
                   id="contactForm-innytemat"
                   name="contactForm-topic-option"
                   value="contactForm-innytemat"
-                /><label for="contactForm-innytemat">Inny temat</label>
+                /><label for="contactForm-innytemat"
+                  >Inny temat
+                  <svg
+                    preserveAspectRatio="none"
+                    viewBox="0 0 168 45"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M45 0.5H167.497C167.229 24.8463 147.41 44.5 123 44.5H0.502751C0.770785 20.1537 20.5902 0.5 45 0.5Z"
+                      stroke="black"
+                    />
+                  </svg>
+                </label>
               </div>
             </div>
           </div>
@@ -1009,9 +1059,9 @@
               itemtype="https://schema.org/PostalAddress"
             >
               <p>
-                <span itemprop="streetAddress">ul. Krakowska 29</span><br />
-                <span itemprop="addressLocality">Wrocław</span>,
-                <span itemprop="postalCode">54‑424</span>
+                <span itemprop="streetAddress">ul. Krakowska 29D</span><br />
+                <span itemprop="postalCode">50‑424</span>
+                <span itemprop="addressLocality">Wrocław</span>
               </p>
             </div>
           </address>
@@ -1026,7 +1076,8 @@
 
     <script src="/scripts/onFirstTimeView.js"></script>
     <script src="/scripts/onWindowCurrency.js"></script>
-    <script src="/scripts/clientsQuotesScript.js"></script>
+    <script src="/scripts/waveAnimation.js"></script>
+    <script type="module" src="/scripts/clientsQuotesScript.js"></script>
     <script src="/scripts/textTypingScript.js"></script>
     <script src="/scripts/autoResize.js"></script>
     <script src="/scripts/jquery/scrollorama.js"></script>

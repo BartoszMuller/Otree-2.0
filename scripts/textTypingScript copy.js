@@ -20,22 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   elementsToType.forEach((currentElement) => {
-    const lines = currentElement.textContent.split("\n");
-
-    // Iteracja przez każdą linijkę tekstu
-    lines.forEach((line) => {
-      // Podzielenie linijki na słowa za pomocą spacji
-      const words = line.trim().split(" ");
-
-      // Jeśli linijka nie jest pusta
-      if (words.length > 0) {
-        // Wyświetlenie ostatniego słowa
-        const lastWord = words[words.length - 1];
-        console.log(lastWord);
-        // Możesz wstawić tutaj kod, który wyświetli ostatnie słowo w odpowiedni sposób
-      }
-    });
-
     currentElement.parentNode.style.position = "relative";
 
     const fadedTextElement = document.createElement("span");

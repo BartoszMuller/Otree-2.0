@@ -1,4 +1,6 @@
+import checkWindowCurrency from "./checkWindowCurrency.js";
 document.addEventListener("DOMContentLoaded", function () {
+  let autoChangeInterval = false;
   let currentQuoteNumber = 1;
   let autoChangeQuoteSpeed = 6000;
   const clientsQuotesElement = document.querySelector(".clientsQuotes-content");
@@ -6,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const amountOfQuotesElement = document.querySelector(".max-quote");
   const prevQuoteButton = document.querySelector(".prev-quote");
   const nextQuoteButton = document.querySelector(".next-quote");
+  const clientsQuotesSection = clientsQuotesElement.closest("section");
 
   const amountOfQuotes = clientsQuotesElement.childElementCount;
 
@@ -13,66 +16,57 @@ document.addEventListener("DOMContentLoaded", function () {
   amountOfQuotesElement.innerHTML = amountOfQuotes;
   clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "1";
 
-  const checkQuoteNumber = () => {
-    autoChangeQuotes();
-    clientsQuotesElement.closest("section");
+  const updateUI = () => {
+    currentQuoteNumberElement.innerHTML = currentQuoteNumber;
+    clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "1";
+    clientsQuotesElement.style.transform = `translateX(-${
+      (currentQuoteNumber - 1) * 100
+    }vw)`;
 
-    if (currentQuoteNumber >= amountOfQuotes) {
-      nextQuoteButton.classList.add("disabled");
-    } else if (nextQuoteButton.classList.contains("disabled")) {
-      nextQuoteButton.classList.remove("disabled");
+    prevQuoteButton.classList.toggle("disabled", currentQuoteNumber <= 1);
+    nextQuoteButton.classList.toggle(
+      "disabled",
+      currentQuoteNumber >= amountOfQuotes
+    );
+  };
+
+  const showQuote = (newIndex) => {
+    clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "0";
+    if (newIndex <= amountOfQuotes) {
+      currentQuoteNumber = newIndex;
+    } else {
+      currentQuoteNumber = 1;
     }
 
-    if (currentQuoteNumber <= 1) {
-      prevQuoteButton.classList.add("disabled");
-    } else if (prevQuoteButton.classList.contains("disabled")) {
-      prevQuoteButton.classList.remove("disabled");
-    }
+    updateUI();
   };
 
   const showPrevQuote = () => {
     if (currentQuoteNumber > 1) {
-      clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "0";
-      clientsQuotesElement.style.transform =
-        "translateX(-" + (currentQuoteNumber - 2) + "00vw)";
-
-      currentQuoteNumber--;
-
-      clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "1";
-      currentQuoteNumberElement.innerHTML = currentQuoteNumber;
-
-      checkQuoteNumber();
+      showQuote(currentQuoteNumber - 1);
     }
   };
 
   const showNextQuote = () => {
     if (currentQuoteNumber < amountOfQuotes) {
-      clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "0";
-      clientsQuotesElement.style.transform =
-        "translateX(-" + currentQuoteNumber + "00vw)";
-
-      currentQuoteNumber++;
-
-      clientsQuotesElement.children[currentQuoteNumber - 1].style.opacity = "1";
-      currentQuoteNumberElement.innerHTML = currentQuoteNumber;
-
-      checkQuoteNumber();
+      showQuote(currentQuoteNumber + 1);
     }
   };
-
-  autoChangeInterval = setInterval(showNextQuote, autoChangeQuoteSpeed);
 
   const autoChangeQuotes = () => {
     clearInterval(autoChangeInterval);
-    if (currentQuoteNumber === amountOfQuotes) {
-      currentQuoteNumber = 2;
-      autoChangeInterval = setInterval(showPrevQuote, autoChangeQuoteSpeed);
-    } else {
-      autoChangeInterval = setInterval(showNextQuote, autoChangeQuoteSpeed);
-    }
+
+    autoChangeInterval = setInterval(
+      () => showQuote(currentQuoteNumber + 1),
+      autoChangeQuoteSpeed
+    );
   };
 
-  checkQuoteNumber();
+  updateUI();
+  checkWindowCurrency(clientsQuotesSection, autoChangeQuotes, () => {
+    clearInterval(autoChangeInterval);
+  });
+
   prevQuoteButton.addEventListener("click", showPrevQuote);
   nextQuoteButton.addEventListener("click", showNextQuote);
 });

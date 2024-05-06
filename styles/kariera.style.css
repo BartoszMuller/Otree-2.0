@@ -115,6 +115,15 @@ section {
   background-color: #545454;
 }
 
+.hiddenScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hiddenScrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 u {
   position: relative;
   white-space: nowrap;
@@ -1263,24 +1272,34 @@ i.circle-selected-onHover .circle-line {
 
 #career-offers .offer-container {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 4rem;
+  row-gap: 1.5rem;
   align-items: center;
   font: 300 16px "Poppins";
   white-space: nowrap;
 }
 
-#career-offers .offer-name {
-  width: 12rem;
-  font: 400 16px "Poppins";
-}
-
-#career-offers .offer-position {
+#career-offers .wrapper {
   display: flex;
-  gap: 2.25rem;
+  gap: 4rem;
 }
 
-#career-offers .position-salary {
-  font: 500 16px "Poppins";
+#career-offers .wrapper.offer-top {
+  flex-grow: 1;
+}
+
+#career-offers .wrapper.offer-position {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2.25rem;
+  flex-grow: 1;
+}
+
+#career-offers .wrapper.offer-bottom {
+  justify-content: space-between;
+  flex-grow: 5;
 }
 
 #career-offers .offer-talentPool {
@@ -1311,6 +1330,15 @@ i.circle-selected-onHover .circle-line {
   background-position: 100%;
 }
 
+#career-offers .offer-name {
+  width: 12rem;
+  font: 400 16px "Poppins";
+}
+
+#career-offers .position-salary {
+  font: 500 16px "Poppins";
+}
+
 #career-offers .offer-location {
   width: 10rem;
 }
@@ -1318,12 +1346,40 @@ i.circle-selected-onHover .circle-line {
 #career-offers .offer-details {
   display: flex;
   gap: 0.75rem;
-  margin-left: auto;
 }
 
 #career-offers .offer-details::after {
   content: url("/assets/icons/chevron-down.svg");
   width: 1.6rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  #career-offers {
+    padding: 2.8rem 0.75rem 3rem;
+  }
+  #career-offers .offer-container {
+    flex-direction: column;
+    row-gap: 1.25rem;
+  }
+  #career-offers .wrapper {
+    display: flex;
+    gap: 4rem;
+    width: 100%;
+  }
+  #career-offers .wrapper.offer-top {
+    flex-grow: 1;
+    justify-content: space-between;
+  }
+  #career-offers .wrapper.offer-position {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.25rem;
+    flex-grow: 1;
+  }
+  #career-offers .wrapper.offer-bottom {
+    justify-content: space-between;
+    flex-grow: 5;
+  }
 }
 
 #aboutUs-design {
@@ -1447,6 +1503,7 @@ i.circle-selected-onHover .circle-line {
 @media only screen and (max-width: 767px) {
   #career-contact {
     padding: 3rem 0.75rem;
+    flex-direction: column;
     justify-content: center;
     gap: 0;
   }
@@ -1456,6 +1513,7 @@ i.circle-selected-onHover .circle-line {
   }
   #career-contact .contact-info {
     gap: 1.45rem;
+    width: 100%;
     padding: 0;
   }
   #career-contact .contact-desc {
@@ -1520,8 +1578,8 @@ i.circle-selected-onHover .circle-line {
 }
 
 @media only screen and (max-width: 767px) {
-  #career-ourValues .workSteps-section-container {
-    padding: 2.5rem 0.75rem;
+  #career-ourValues {
+    padding: 2.8rem 0.75rem 4.7rem;
   }
   #career-ourValues .ourValues-list {
     gap: 2.8rem;
@@ -1547,7 +1605,7 @@ i.circle-selected-onHover .circle-line {
 
 #career-apply .apply-steps {
   display: flex;
-  flex-shrink: 2;
+  width: 100%;
   gap: 10rem;
   margin: auto;
   padding-top: 6.3rem;
@@ -1556,6 +1614,7 @@ i.circle-selected-onHover .circle-line {
 
 #career-apply .applyStep-item {
   display: flex;
+  width: 20rem;
   flex-direction: column;
   align-items: baseline;
 }
@@ -1567,12 +1626,31 @@ i.circle-selected-onHover .circle-line {
 
 #career-apply .applyStep-number {
   font: 400 16px "Poppins";
+  white-space: nowrap;
   color: #ffa48e;
-  margin: 2.2rem 1.5rem;
+  margin: 2.2rem 0 1.5rem;
 }
 
 #career-apply .applyStep-desc {
   font: 400 18px/30px "Poppins";
+}
+
+@media only screen and (max-width: 767px) {
+  #career-apply {
+    padding: 4.6rem 0.75rem;
+  }
+  #career-apply .apply-steps {
+    gap: 7.3rem;
+    padding-inline: 1.38rem;
+  }
+  #career-apply .applyStep-number {
+    font: 400 16px "Poppins";
+    color: #e3e5e2;
+    margin: 2.2rem 0 1.5rem;
+  }
+  #career-apply .applyStep-desc {
+    font: 400 18px "Poppins";
+  }
 }
 
 #career-benefits {
@@ -1603,6 +1681,9 @@ i.circle-selected-onHover .circle-line {
 }
 
 #career-benefits .benefit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   width: 20%;
   flex-grow: 1;
   min-width: 215px;
@@ -1614,7 +1695,6 @@ i.circle-selected-onHover .circle-line {
 }
 
 #career-benefits .benefit-name {
-  margin: 1.7rem 0 1.5rem;
   font: 400 18px/30px "Poppins";
 }
 
@@ -1624,6 +1704,12 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   #career-benefits {
-    padding: 3.75rem  0.75rem;
+    padding: 3.75rem 0.75rem;
+  }
+  #career-benefits .benefit-name {
+    font: 400 18px "Poppins";
+  }
+  #career-benefits .benefit-desc {
+    font: 400 16px "Poppins";
   }
 }

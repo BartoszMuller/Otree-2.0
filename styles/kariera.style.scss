@@ -16,29 +16,35 @@
   }
   .offer-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
     gap: 4rem;
+    row-gap: 1.5rem;
 
     align-items: center;
     font: $font-b16-light;
     white-space: nowrap;
   }
-
-  .offer-name {
-    width: 12rem;
-    font: $font-b16-regular;
-  }
-
-  .offer-position {
+  .wrapper {
     display: flex;
-    gap: 2.25rem;
-  }
+    gap: 4rem;
 
-  .position-name {
+    &.offer-top {
+      flex-grow: 1;
+      
+    }
+    &.offer-position {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2.25rem;
+      flex-grow: 1;
+    } 
+    &.offer-bottom {
+      justify-content: space-between;
+      flex-grow: 5;
+    }
   }
-  .position-salary {
-    font: $font-b16-medium;
-  }
-
   .offer-talentPool {
     background: $color-gradient;
     padding: 0.625rem 2rem;
@@ -81,6 +87,18 @@
       background-position: 100%;
     }
   }
+
+  .offer-name {
+    width: 12rem;
+    font: $font-b16-regular;
+  }
+
+  .position-name {
+  }
+  .position-salary {
+    font: $font-b16-medium;
+  }
+
   .offer-location {
     width: 10rem;
   }
@@ -88,10 +106,38 @@
     display: flex;
     gap: 0.75rem;
 
-    margin-left: auto;
     &::after {
       content: url("/assets/icons/chevron-down.svg");
       width: 1.6rem;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 2.8rem 0.75rem 3rem;
+
+    .offer-container {
+      flex-direction: column;
+      row-gap: 1.25rem;
+    }
+    .wrapper {
+      display: flex;
+      gap: 4rem;
+      width: 100%;
+  
+      &.offer-top {
+        flex-grow: 1;
+        justify-content: space-between;
+      }
+      &.offer-position {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2.25rem;
+        flex-grow: 1;
+      } 
+      &.offer-bottom {
+        justify-content: space-between;
+        flex-grow: 5;
+      }
     }
   }
 }
@@ -213,6 +259,7 @@
 
   @media only screen and (max-width: 767px) {
     padding: 3rem 0.75rem;
+    flex-direction: column;
     justify-content: center;
     gap: 0;
     .contact-title {
@@ -221,6 +268,7 @@
     }
     .contact-info {
       gap: 1.45rem;
+      width: 100%;
       padding: 0;
     }
     .contact-desc {
@@ -294,8 +342,8 @@
   }
 
   @media only screen and (max-width: 767px) {
-    .workSteps-section-container {
-      padding: 2.5rem 0.75rem;
+    & {
+      padding: 2.8rem 0.75rem 4.7rem;
     }
 
     .ourValues-list {
@@ -322,7 +370,7 @@
 
   .apply-steps {
     display: flex;
-    flex-shrink: 2;
+    width: 100%;
     gap: 10rem;
     margin: auto;
     padding-top: 6.3rem;
@@ -330,6 +378,7 @@
   }
   .applyStep-item {
     display: flex;
+    width: 20rem;
     flex-direction: column;
     align-items: baseline;
   }
@@ -339,11 +388,30 @@
   }
   .applyStep-number {
     font: $font-b16-regular;
+    white-space: nowrap;
     color: $color-light-orange;
-    margin: 2.2rem 1.5rem;
+    margin: 2.2rem 0 1.5rem;
   }
   .applyStep-desc {
     font: $font-b18-regular;
+  }
+
+  @media only screen and (max-width: 767px) {
+    padding: 4.6rem 0.75rem;
+
+    .apply-steps {
+      gap: 7.3rem;
+      padding-inline: 1.38rem;
+    }
+
+    .applyStep-number {
+      font: $font-mobile-b16-regular;
+      color: $color-gray-500;
+      margin: 2.2rem 0 1.5rem;
+    }
+    .applyStep-desc {
+      font: $font-mobile-b18-regular;
+    }
   }
 }
 
@@ -372,6 +440,9 @@
     }
   }
   .benefit-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     width: 20%;
     flex-grow: 1;
     min-width: 215px;
@@ -381,7 +452,6 @@
     height: 6.25rem;
   }
   .benefit-name {
-    margin: 1.7rem 0 1.5rem;
     font: $font-b18-regular;
   }
   .benefit-desc {
@@ -389,7 +459,13 @@
   }
 
   @media only screen and (max-width: 767px) {
-padding: 3.75rem  0.75rem;
-  }
+    padding: 3.75rem 0.75rem;
 
+    .benefit-name {
+      font: $font-mobile-b18-regular;
+    }
+    .benefit-desc {
+      font: $font-mobile-b16-regular;
+    }
+  }
 }

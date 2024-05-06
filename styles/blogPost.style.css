@@ -36,8 +36,10 @@ h2 {
   font: 500 32px/51px "Poppins";
 }
 
-p {
-  letter-spacing: 0.02em;
+@media only screen and (max-width: 767px) {
+  h2 {
+    font: 500 24px "Poppins";
+  }
 }
 
 section {
@@ -53,7 +55,7 @@ section {
 
 @media only screen and (min-width: 768px) {
   .showOnMobile {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -68,9 +70,6 @@ section {
 @media only screen and (max-width: 767px) {
   .hideOnMobile {
     display: none !important;
-  }
-  .showOnMobile {
-    display: block;
   }
   .section-container {
     padding: 4rem 0.75rem;
@@ -116,12 +115,22 @@ section {
   background-color: #545454;
 }
 
+.hiddenScrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hiddenScrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 u {
   position: relative;
   white-space: nowrap;
   text-decoration: none;
   font-weight: inherit;
   font-style: inherit;
+  z-index: 0;
 }
 
 u::before {
@@ -131,7 +140,7 @@ u::before {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -231,12 +240,13 @@ i.circle-selected-onHover .circle-line {
   color: #ffffff;
 }
 
-.typeTextContainer {
+.typeTextAnimation {
   position: relative;
 }
 
-.typeTextAnimation.faded {
+.typeTextAnimation .faded {
   position: absolute;
+  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -472,11 +482,11 @@ i.circle-selected-onHover .circle-line {
   border-radius: 30% 0 30% 0;
 }
 
-.companyLeaf.case1 {
+.companyLeaf.case1 .leaf-content {
   padding: 2.5rem;
 }
 
-.companyLeaf.case2 {
+.companyLeaf.case2 .leaf-content {
   padding: 10% 2.5rem 2.5rem 10%;
 }
 
@@ -546,7 +556,6 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 6rem;
   background: #6ef083;
 }
 
@@ -556,7 +565,7 @@ i.circle-selected-onHover .circle-line {
   justify-content: center;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 0;
+  padding: 4rem 6rem;
   color: #1e1e1e;
 }
 
@@ -612,8 +621,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%) !important;
   }
   .greenLeaf {
-    padding: 3rem;
     justify-content: center;
+  }
+  .greenLeaf .leaf-content {
+    padding: 3rem;
   }
   .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -644,6 +655,8 @@ i.circle-selected-onHover .circle-line {
     width: 100%;
     aspect-ratio: unset;
     min-height: 94vw;
+  }
+  .leafs-section-container .leaf-item .leaf-content {
     padding: 10% 2.5rem 2.5rem 10%;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
@@ -676,8 +689,10 @@ i.circle-selected-onHover .circle-line {
     filter: brightness(60%);
   }
   .leafs-section-container .greenLeaf {
-    padding: 2rem 3rem;
     justify-content: center;
+  }
+  .leafs-section-container .greenLeaf .leaf-content {
+    padding: 2rem 3rem;
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-title {
     display: block;
@@ -735,15 +750,16 @@ i.circle-selected-onHover .circle-line {
 .workSteps-section-container {
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
   padding: 10.6rem 6.35rem 10.6rem 7rem;
+  margin: auto;
 }
 
 .workSteps-top {
   width: 30%;
   flex-grow: 1;
-  max-width: 1000px;
+  max-width: 500px;
 }
 
 .workSteps-title {
@@ -798,6 +814,10 @@ i.circle-selected-onHover .circle-line {
 }
 
 @media only screen and (max-width: 767px) {
+  .workSteps-content {
+    align-items: center;
+    justify-content: center;
+  }
   .workSteps-title {
     margin-left: 2rem;
   }
@@ -1235,6 +1255,10 @@ i.circle-selected-onHover .circle-line {
   }
 }
 
+body {
+  background: #f9f8f7;
+}
+
 #blogPost-hero .hero-desc {
   padding: 0.75rem 0;
 }
@@ -1251,14 +1275,15 @@ i.circle-selected-onHover .circle-line {
 #blogPost-post {
   display: flex;
   flex-direction: column;
-  gap: 6.5rem;
-  max-width: 1200px;
-  padding: 5rem 7.25rem 12.5rem;
 }
 
 #blogPost-post .post-info {
   display: flex;
+  flex-direction: row;
   gap: 1rem;
+  width: 915px;
+  padding-top: 5rem;
+  margin-inline: 7.25rem;
 }
 
 #blogPost-post .post-authorImg {
@@ -1299,32 +1324,100 @@ i.circle-selected-onHover .circle-line {
   margin-top: 1.5rem;
 }
 
-#blogPost-post .post-content {
+#blogPost-post .article-section-container {
+  width: 1050px;
+}
+
+#blogPost-post .article-section {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  width: 100%;
   font: 400 18px/30px "Poppins";
 }
 
-#blogPost-post .post-content section:not(:last-child) {
-  padding-bottom: 4rem;
-  border-bottom: 1px solid #e3e5e2;
+#blogPost-post .article-section:last-child {
+  padding-bottom: 12.5rem;
 }
 
-#blogPost-post .post-content h2 {
+#blogPost-post .article-section.gray {
+  background: #e3e5e2;
+}
+
+#blogPost-post .article-section.summary {
+  background: #ff5e21;
+  color: #ffffff;
+}
+
+#blogPost-post .article-section.summary section {
+  padding-top: 5.25rem;
+}
+
+#blogPost-post .article-section.summary section > *:first-child {
+  margin-top: 0;
+}
+
+#blogPost-post .article-section.summary h2 {
+  position: relative;
+  font-weight: 600;
+}
+
+#blogPost-post .article-section.summary h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1.5rem;
+  width: 3.75rem;
+  height: 5px;
+  background: #6ef083;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#blogPost-post .article-section.summary p {
+  font: 500 18px/30px "Poppins";
+}
+
+#blogPost-post .article-section.summary .sources {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 5.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ffffff;
+}
+
+#blogPost-post .article-section.summary .sources .sources-title {
+  font: 500 24px "Poppins";
+}
+
+#blogPost-post .article-section.summary .sources-list {
+  font: 300 18px/30px "Poppins";
+  margin: 0;
+}
+
+#blogPost-post .article-section.summary .sources-list li {
+  list-style-type: none;
+}
+
+#blogPost-post .article-section p:not(:first-child) {
+  margin-top: 2.37rem;
+}
+
+#blogPost-post .article-section h2 {
   margin-bottom: 1.5rem;
   font: 500 24px "Poppins";
 }
 
-#blogPost-post .post-content .light {
+#blogPost-post .article-section .light {
   font: 300 18px/30px "Poppins";
 }
 
-#blogPost-post .post-content strong {
+#blogPost-post .article-section strong {
   font-weight: 600;
 }
 
-#blogPost-post .post-content ol {
+#blogPost-post .article-section ol {
   display: flex;
   flex-direction: column;
   gap: 2.75rem;
@@ -1332,36 +1425,101 @@ i.circle-selected-onHover .circle-line {
   margin-left: 4rem;
 }
 
-#blogPost-post .post-content ol > li {
+#blogPost-post .article-section ol > li {
   position: relative;
 }
 
-#blogPost-post .post-content ol > li::before {
+#blogPost-post .article-section ol > li::before {
   content: counters(list-item, ".") ".";
   position: absolute;
   left: -4rem;
-  top: -0.5rem;
+  top: -0.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 2.5rem;
   height: 2.5rem;
-  z-index: -1;
   border-radius: 50%;
   background: #1e1e1e;
   color: #ffffff;
 }
 
-#blogPost-post .post-content ul {
+#blogPost-post .article-section ul {
   margin-left: 3em;
 }
 
-#blogPost-post .post-content ul > li {
+#blogPost-post .article-section ul > li {
   list-style-type: disc;
 }
 
-#blogPost-post .post-content ul > li::marker {
+#blogPost-post .article-section ul > li::marker {
   font-size: 0.8em;
+}
+
+#blogPost-post .article-section section {
+  display: block;
+  margin-left: 7.25rem;
+  margin-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+#blogPost-post .article-section section:not(:first-child) {
+  border-top: 1px solid #e3e5e2;
+}
+
+#blogPost-post .article-section section.gray-section {
+  background: #e3e5e2;
+  margin-inline: 0;
+  padding: 3.12rem 2.94rem 3.12rem 7.25rem;
+}
+
+#blogPost-post .article-section section.gray-section + section {
+  border-top: 0;
+}
+
+#blogPost-post .article-section section.bottom-moved-img {
+  position: relative;
+  overflow: visible;
+  padding-bottom: 8rem;
+}
+
+#blogPost-post .article-section section.bottom-moved-img img {
+  position: absolute;
+  bottom: -4.25rem;
+  width: 10.5rem;
+  height: 10.5rem;
+}
+
+#blogPost-post .article-section .green-bar {
+  padding-left: 1rem;
+  border-left: 1.25rem solid #6ef083;
+}
+
+#blogPost-post .article-section .white-bg {
+  padding: 1.5rem;
+  margin-right: 1.9rem;
+  background: #ffffff;
+}
+
+#blogPost-post .article-section .white-bg + .white-bg {
+  margin-top: 4rem;
+}
+
+#blogPost-post .article-section .quote-big {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2.5rem;
+  font: 600 24px/37px "Poppins";
+}
+
+#blogPost-post .article-section .quote-big::before {
+  content: url("/assets/icons/quote-big.svg");
+}
+
+#blogPost-post .article-section .header-big {
+  font-weight: 600;
+  margin-bottom: 4rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1418,7 +1576,7 @@ i.circle-selected-onHover .circle-line {
     display: flex;
     flex-direction: column;
     gap: 2.75rem;
-    margin-top: 2.75rem;
+    margin-top: 2.8rem;
     margin-left: 4rem;
   }
   #blogPost-post .post-content ol > li {
@@ -1428,7 +1586,7 @@ i.circle-selected-onHover .circle-line {
     content: counters(list-item, ".") ".";
     position: absolute;
     left: -4rem;
-    top: -0.5rem;
+    top: 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
