@@ -20,21 +20,45 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   elementsToType.forEach((currentElement) => {
-    const lines = currentElement.textContent.split("\n");
+    // const lines = currentElement.textContent.split("\n");
 
-    // Iteracja przez każdą linijkę tekstu
-    lines.forEach((line) => {
-      // Podzielenie linijki na słowa za pomocą spacji
-      const words = line.trim().split(" ");
-
-      // Jeśli linijka nie jest pusta
-      if (words.length > 0) {
-        // Wyświetlenie ostatniego słowa
-        const lastWord = words[words.length - 1];
-        console.log(lastWord);
-        // Możesz wstawić tutaj kod, który wyświetli ostatnie słowo w odpowiedni sposób
-      }
-    });
+    // // Iteracja przez każdą linijkę tekstu
+    // const lineHeight = parseInt(window.getComputedStyle(currentElement).lineHeight);
+    // // Pobranie szerokości kontenera dla elementu
+    // const containerWidth = currentElement.clientWidth;
+    // // Pobranie tekstu bez białych znaków z elementu
+    // const text = currentElement.textContent.trim();
+    // // Podzielenie tekstu na słowa
+    // const words = text.split(/\s+/);
+    // // Inicjalizacja zmiennych
+    // let lineWords = [];
+    // let currentLineWidth = 0;
+    // // Iteracja przez każde słowo w tekście
+    // words.forEach(word => {
+    //     // Utworzenie tymczasowego elementu, aby uzyskać szerokość słowa
+    //     const tempSpan = document.createElement('span');
+    //     tempSpan.textContent = word;
+    //     document.body.appendChild(tempSpan);
+    //     const wordWidth = tempSpan.clientWidth;
+    //     document.body.removeChild(tempSpan);
+    //     // Jeśli dodanie słowa nie przekroczy szerokości kontenera
+    //     if (currentLineWidth + wordWidth <= containerWidth) {
+    //         lineWords.push(word);
+    //         currentLineWidth += wordWidth + 5; // Dodajemy trochę marginesu między słowami (5 pikseli)
+    //     } else {
+    //         // Wyświetlenie ostatniego słowa z linii
+    //         const lastWord = lineWords[lineWords.length - 1];
+    //         console.log(lastWord);
+    //         // Rozpoczęcie nowej linii
+    //         lineWords = [word];
+    //         currentLineWidth = wordWidth + 5;
+    //     }
+    // });
+    // // Wyświetlenie ostatniego słowa z ostatniej linii
+    // if (lineWords.length > 0) {
+    //     const lastWord = lineWords[lineWords.length - 1];
+    //     console.log(lastWord);
+    // }
 
     currentElement.parentNode.style.position = "relative";
 

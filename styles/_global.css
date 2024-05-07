@@ -116,11 +116,18 @@ section {
   background-color: #545454;
 }
 
-.hiddenScrollbar::-webkit-scrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
+  scroll-behavior: smooth;
+}
+
+.hiddenScrollbar::-webkit-scrollbar,
+.horizontalScroll::-webkit-scrollbar {
   display: none;
 }
 
-.hiddenScrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -422,7 +429,7 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   .hero-section .hero-content {
-    justify-content: flex-end !important;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     width: 100%;
@@ -655,7 +662,7 @@ i.circle-selected-onHover .circle-line {
     min-height: 94vw;
   }
   .leafs-section-container .leaf-item .leaf-content {
-    padding: 10% 2.5rem 2.5rem 10%;
+    padding: 1.9rem 1.5rem;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
   .leafs-section-container .leaf-item:nth-child(2n-1) img {
@@ -669,7 +676,9 @@ i.circle-selected-onHover .circle-line {
     border-radius: 30% 0 30% 0;
   }
   .leafs-section-container .leaf-item:nth-child(2n) .leaf-showCS {
-    align-self: flex-start;
+    order: -1;
+    margin: 0 0 auto;
+    align-self: flex-end;
   }
   .leafs-section-container .leaf-item .leaf-content {
     opacity: 1;
@@ -829,13 +838,29 @@ i.circle-selected-onHover .circle-line {
 }
 
 .contactForm-section {
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 3.5rem;
   padding: 9rem;
-  background: url("/assets/vectors/contact-bg.svg") center no-repeat;
-  background-size: cover;
+  background: #f9f8f7;
+}
+
+.contactForm-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 88%;
+  margin: auto;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition: all 3s;
+}
+
+.contactForm-leaf.isShown {
+  stroke-dashoffset: 0;
 }
 
 .contactForm-title {
@@ -1169,6 +1194,7 @@ i.circle-selected-onHover .circle-line {
 #footer .footer-bottom .footer-bottom-link {
   font: 300 14px "Poppins";
   color: #ffffff;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1183,17 +1209,20 @@ i.circle-selected-onHover .circle-line {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 2.4rem;
     padding: 0 0.75rem;
   }
   #footer .footer-text {
-    gap: 1.1rem;
+    gap: 1rem;
   }
   #footer .footer-text .footer-text-title {
     font: 500 28px/56px "Poppins";
   }
   #footer .footer-text .footer-text-desc {
     font: italic 400 20px "Poppins";
+  }
+  #footer .footer-text .footer-text-logos {
+    margin-top: 0.6rem;
   }
   #footer .footer-otreeInfo {
     font: 400 16px "Poppins";

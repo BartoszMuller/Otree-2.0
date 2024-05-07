@@ -26,6 +26,7 @@ html {
   font-size: 16px;
   font-family: "Poppins";
   scroll-behavior: smooth;
+  letter-spacing: 0.02em;
 }
 
 h1 {
@@ -115,11 +116,18 @@ section {
   background-color: #545454;
 }
 
-.hiddenScrollbar::-webkit-scrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
+  scroll-behavior: smooth;
+}
+
+.hiddenScrollbar::-webkit-scrollbar,
+.horizontalScroll::-webkit-scrollbar {
   display: none;
 }
 
-.hiddenScrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -130,6 +138,12 @@ u {
   text-decoration: none;
   font-weight: inherit;
   font-style: inherit;
+  z-index: -1;
+}
+
+u + span {
+  position: relative;
+  z-index: 1;
 }
 
 u::before {
@@ -280,7 +294,7 @@ i.circle-selected-onHover .circle-line {
 
 .hero-header .logo {
   flex-shrink: 0;
-  width: 7rem;
+  width: 6.6rem;
 }
 
 .hero-nav {
@@ -335,7 +349,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 .hero-nav .menu-icon img {
-  width: 1.5rem;
+  height: 1rem;
 }
 
 .hero-content {
@@ -377,6 +391,7 @@ i.circle-selected-onHover .circle-line {
 }
 
 .hero-bottom {
+  padding: 1rem 1.5rem;
   margin: auto;
   font: 300 14px "Poppins";
 }
@@ -414,7 +429,7 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   .hero-section .hero-content {
-    justify-content: flex-end !important;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     width: 100%;
@@ -435,6 +450,9 @@ i.circle-selected-onHover .circle-line {
   }
   .hero-section .hero-content .hero-subtitle {
     font: italic 300 17px "Poppins";
+  }
+  .hero-section .hero-bottom {
+    margin-right: 0;
   }
 }
 
@@ -607,9 +625,6 @@ i.circle-selected-onHover .circle-line {
   .leaf-item .leaf-content {
     opacity: 1 !important;
   }
-  .leaf-item .leaf-content .leaf-title {
-    font: 600 20px "Poppins";
-  }
   .leaf-item .leaf-content .leaf-buttons {
     font: 300 12px "Poppins";
   }
@@ -625,15 +640,6 @@ i.circle-selected-onHover .circle-line {
   .greenLeaf .leaf-content {
     padding: 3rem;
   }
-  .greenLeaf .leaf-content .leaf-title {
-    display: block;
-    width: 70%;
-    margin-right: auto;
-    font: 500 19px "Poppins";
-  }
-  .greenLeaf .leaf-content .leaf-title .title-number {
-    font: 500 19px "Poppins";
-  }
   .greenLeaf .leaf-content .leaf-desc {
     font: 400 15px "Poppins";
   }
@@ -644,10 +650,10 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 800px) {
   .leafs-section-container {
-    padding: 3.75rem 0.75rem;
+    padding: 3.75rem 0.25rem;
   }
   .leafs-section-container .leafs-container {
-    gap: 1rem;
+    gap: 0.5rem;
   }
   .leafs-section-container .leaf-item {
     min-width: unset;
@@ -656,7 +662,7 @@ i.circle-selected-onHover .circle-line {
     min-height: 94vw;
   }
   .leafs-section-container .leaf-item .leaf-content {
-    padding: 10% 2.5rem 2.5rem 10%;
+    padding: 1.9rem 1.5rem;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
   .leafs-section-container .leaf-item:nth-child(2n-1) img {
@@ -670,13 +676,12 @@ i.circle-selected-onHover .circle-line {
     border-radius: 30% 0 30% 0;
   }
   .leafs-section-container .leaf-item:nth-child(2n) .leaf-showCS {
-    align-self: flex-start;
+    order: -1;
+    margin: 0 0 auto;
+    align-self: flex-end;
   }
   .leafs-section-container .leaf-item .leaf-content {
     opacity: 1;
-  }
-  .leafs-section-container .leaf-item .leaf-content .leaf-title {
-    font: 600 20px "Poppins";
   }
   .leafs-section-container .leaf-item .leaf-content .leaf-buttons {
     font: 300 12px "Poppins";
@@ -692,15 +697,6 @@ i.circle-selected-onHover .circle-line {
   }
   .leafs-section-container .greenLeaf .leaf-content {
     padding: 2rem 3rem;
-  }
-  .leafs-section-container .greenLeaf .leaf-content .leaf-title {
-    display: block;
-    width: 70%;
-    margin-right: auto;
-    font: 500 19px "Poppins";
-  }
-  .leafs-section-container .greenLeaf .leaf-content .leaf-title .title-number {
-    font: 500 19px "Poppins";
   }
   .leafs-section-container .greenLeaf .leaf-content .leaf-desc {
     font: 400 15px "Poppins";
@@ -842,13 +838,29 @@ i.circle-selected-onHover .circle-line {
 }
 
 .contactForm-section {
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 3.5rem;
   padding: 9rem;
-  background: url("/assets/vectors/contact-bg.svg") center no-repeat;
-  background-size: cover;
+  background: #f9f8f7;
+}
+
+.contactForm-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 88%;
+  margin: auto;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition: all 3s;
+}
+
+.contactForm-leaf.isShown {
+  stroke-dashoffset: 0;
 }
 
 .contactForm-title {
@@ -885,6 +897,7 @@ i.circle-selected-onHover .circle-line {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  height: 2rem;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option input {
@@ -892,24 +905,28 @@ i.circle-selected-onHover .circle-line {
   position: absolute;
   z-index: 0;
   width: 100%;
-  height: 2rem;
   margin: auto;
-  border: 1px dashed #545454;
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
   color: #ffffff;
-}
-
-.contactForm-content .contactForm-topics .topics-options .topic-option input:checked {
-  background: #ff5e21;
-  border: 1px solid #ff5e21;
+  transition: border 0.5s;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option input:checked + label {
   color: #ffffff;
+  background: #ff5e21;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option input:checked + label svg {
+  display: none;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option input:not(:checked):hover + label svg {
+  animation: moveDashedBorder 0.25s infinite linear;
 }
 
 .contactForm-content .contactForm-topics .topics-options .topic-option label {
+  position: relative;
   z-index: 2;
   display: flex;
   padding: 0.5rem 2rem;
@@ -918,6 +935,17 @@ i.circle-selected-onHover .circle-line {
   color: #1e1e1e;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.contactForm-content .contactForm-topics .topics-options .topic-option label svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: all 0.2s;
+  stroke-dasharray: 4;
+  stroke-dashoffset: 0;
 }
 
 .contactForm-content .contactForm-input {
@@ -1166,6 +1194,7 @@ i.circle-selected-onHover .circle-line {
 #footer .footer-bottom .footer-bottom-link {
   font: 300 14px "Poppins";
   color: #ffffff;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1180,17 +1209,20 @@ i.circle-selected-onHover .circle-line {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 2.4rem;
     padding: 0 0.75rem;
   }
   #footer .footer-text {
-    gap: 1.1rem;
+    gap: 1rem;
   }
   #footer .footer-text .footer-text-title {
     font: 500 28px/56px "Poppins";
   }
   #footer .footer-text .footer-text-desc {
     font: italic 400 20px "Poppins";
+  }
+  #footer .footer-text .footer-text-logos {
+    margin-top: 0.6rem;
   }
   #footer .footer-otreeInfo {
     font: 400 16px "Poppins";
@@ -1203,6 +1235,26 @@ i.circle-selected-onHover .circle-line {
   }
   #footer .footer-bottom .footer-bottom-link {
     font: 300 14px "Poppins";
+  }
+}
+
+.rowWave > * {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.UpDownIn {
+  animation: UpDown 0.8s ease-in-out forwards;
+}
+
+@keyframes UpDown {
+  50% {
+    opacity: 1;
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
   }
 }
 
@@ -1251,6 +1303,12 @@ i.circle-selected-onHover .circle-line {
   }
   to {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes moveDashedBorder {
+  to {
+    stroke-dashoffset: 8;
   }
 }
 
@@ -1469,7 +1527,7 @@ i.circle-selected-onHover .circle-line {
 
 #career-contact {
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;

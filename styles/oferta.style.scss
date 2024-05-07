@@ -108,11 +108,11 @@
 
 #offer-implement {
   background: $color-orange;
-  color: $color-white;
+  color: $color-dark;
 
   .implement-steps {
     .workStep-item::before {
-      background: $color-white;
+      background: $color-dark;
     }
   }
 }

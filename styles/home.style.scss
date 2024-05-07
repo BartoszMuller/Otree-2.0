@@ -14,10 +14,7 @@
   color: $color-white;
 
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 1;
+
     gap: 0rem;
 
     .hero-title {
@@ -254,44 +251,44 @@
     z-index: 1;
   }
 
-  .leaf-item.onFirstTimeView {
-    position: relative;
-    transform-origin: top;
-    z-index: 1;
-    transform: perspective(1500px) translate(0, -1rem) rotateX(180deg);
+  // .leaf-item.onFirstTimeView {
+  //   position: relative;
+  //   transform-origin: top;
+  //   z-index: 1;
+  //   transform: perspective(1500px) translate(0, -1rem) rotateX(180deg);
 
-    img {
-      z-index: 1;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      border-radius: inherit;
-      background: rgba(85, 85, 85, 0.693);
-      backdrop-filter: blur(4px);
-      transition: all 2s;
-    }
-  }
-  .onFirstTimeView.isShown {
-    animation: unfoldAnime 2s forwards;
-    &::after {
-      opacity: 0;
-    }
-  }
+  //   img {
+  //     z-index: 1;
+  //   }
+  //   &::after {
+  //     content: "";
+  //     position: absolute;
+  //     top: 0;
+  //     right: 0;
+  //     bottom: 0;
+  //     left: 0;
+  //     z-index: 1;
+  //     width: 100%;
+  //     height: 100%;
+  //     opacity: 1;
+  //     border-radius: inherit;
+  //     background: rgba(85, 85, 85, 0.693);
+  //     backdrop-filter: blur(4px);
+  //     transition: all 2s;
+  //   }
+  // }
+  // .onFirstTimeView.isShown {
+  //   animation: unfoldAnime 2s forwards;
+  //   &::after {
+  //     opacity: 0;
+  //   }
+  // }
 
-  @keyframes unfoldAnime {
-    100% {
-      transform: translate(0, 0rem) rotateX(0deg);
-    }
-  }
+  // @keyframes unfoldAnime {
+  //   100% {
+  //     transform: translate(0, 0rem) rotateX(0deg);
+  //   }
+  // }
 
   //   ////////// MOBILE CASE STUDY //////////
 
@@ -346,6 +343,7 @@
         row-gap: 2rem;
         min-width: unset;
         max-width: 400px;
+        padding-top: 2.75rem;
 
         img {
           width: 30%;
@@ -595,6 +593,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  min-height: max-content;
   height: 100vh;
   max-height: 1000px;
   background: $color-gray-400;
@@ -602,7 +601,7 @@
   .workType-img {
     position: relative;
     width: 46%;
-    min-height: 300px;
+    min-height: 400px;
     height: auto;
     flex-grow: 1;
     img {
@@ -618,11 +617,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10rem;
+    gap: 8.88rem;
     flex-basis: 54%;
     flex-grow: 1;
-    // flex-basis: 0;
-    // flex-grow: 1;
 
     padding: 6rem 6.25rem 6rem 4rem;
 
@@ -701,8 +698,9 @@
       .workType-content {
         padding: 2.5rem 0.75rem;
         min-width: 64%;
-        height: 100vh;
-        max-height: 900px; // ASK
+        
+        height: 100svh;
+        max-height: 750px; // ASK
 
         &::before {
           display: none;
@@ -718,6 +716,7 @@
           gap: 1rem;
           min-width: unset;
           .workType-desc {
+            padding-top: 2.25rem;
             font: $font-mobile-b17-regular;
           }
           .workType-button {
@@ -1032,6 +1031,7 @@
 
       .ourValues-content {
         gap: 2.5rem;
+        padding-bottom: 0;
         .value-item {
           width: 100%;
           .value-name {

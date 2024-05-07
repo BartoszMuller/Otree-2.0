@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const elementsToCheck = [...document.querySelectorAll(".rowWave > *")];
   console.log(elementsToCheck);
-  let currentHeight = 0;
+  let currentHeight = undefined;
   let counter = 0;
   elementsToCheck.forEach((currentElement) => {
     console.log(currentElement);
@@ -9,7 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const elementOffset = currentElement.getBoundingClientRect();
       const viewPoint = window.innerHeight / 1.3;
 
-      if (elementOffset.top <= viewPoint && elementOffset.bottom >= viewPoint) {
+      if (
+        elementOffset.top <= viewPoint &&
+        elementOffset.bottom >= window.innerHeight - viewPoint
+      ) {
         if (currentHeight !== elementOffset.top) {
           currentHeight = elementOffset.top;
           counter = 1;

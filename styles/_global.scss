@@ -232,7 +232,10 @@ section {
   }
 }
 
-.hiddenScrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
+  scroll-behavior: smooth;
+
   // Chrome, Safari and Opera
   &::-webkit-scrollbar {
     display: none;
@@ -587,7 +590,7 @@ i.circle-selected-onHover {
 @media only screen and (max-width: 767px) {
   .hero-section {
     .hero-content {
-      justify-content: flex-end !important;
+      justify-content: flex-end;
       align-items: center;
       gap: 1rem;
 
@@ -673,7 +676,7 @@ i.circle-selected-onHover {
 .companyLeaf {
   &.case1 {
     .leaf-content {
-      padding: 2.5rem; // ASK
+      padding: 2.5rem; 
     }
   }
   &.case2 {
@@ -856,7 +859,7 @@ i.circle-selected-onHover {
       min-height: 94vw;
 
       .leaf-content {
-        padding: 10% 2.5rem 2.5rem 10%;
+        padding: 1.9rem 1.5rem;
       }
 
       &:nth-child(2n-1),
@@ -875,7 +878,10 @@ i.circle-selected-onHover {
       }
       &:nth-child(2n) {
         .leaf-showCS {
-          align-self: flex-start;
+          order: -1;
+
+          margin: 0 0 auto;
+          align-self: flex-end;
         }
       }
 
@@ -1073,6 +1079,8 @@ i.circle-selected-onHover {
 ///
 
 .contactForm-section {
+  position: relative;
+
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -1080,9 +1088,29 @@ i.circle-selected-onHover {
 
   padding: 9rem;
 
-  background: url("/assets/vectors/contact-bg.svg") center no-repeat;
-  background-size: cover;
+  // background: url("/assets/vectors/contact-bg.svg") center no-repeat;
+  // background-size: cover;
+  background: $color-gray-400;
 }
+.contactForm-leaf {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  height: 88%;
+  margin: auto;
+
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+
+  transition: all 3s;
+  &.isShown {
+    stroke-dashoffset: 0;
+  }
+}
+
 .contactForm-title {
   max-width: 440px;
 
@@ -1430,6 +1458,7 @@ i.circle-selected-onHover {
     .footer-bottom-link {
       font: $font-b14-light;
       color: $color-white;
+      white-space: nowrap;
     }
   }
   @media only screen and (max-width: 767px) {
@@ -1444,18 +1473,21 @@ i.circle-selected-onHover {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 4rem;
+        gap: 2.4rem;
 
         padding: 0 0.75rem;
       }
       .footer-text {
-        gap: 1.1rem;
+        gap: 1rem;
 
         .footer-text-title {
           font: $font-mobile-h2-regular;
         }
         .footer-text-desc {
           font: $font-mobile-b20-italic;
+        }
+        .footer-text-logos {
+          margin-top: 0.6rem;
         }
       }
       .footer-otreeInfo {

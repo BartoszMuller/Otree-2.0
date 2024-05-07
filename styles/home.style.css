@@ -116,11 +116,18 @@ section {
   background-color: #545454;
 }
 
-.hiddenScrollbar::-webkit-scrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
+  scroll-behavior: smooth;
+}
+
+.hiddenScrollbar::-webkit-scrollbar,
+.horizontalScroll::-webkit-scrollbar {
   display: none;
 }
 
-.hiddenScrollbar {
+.hiddenScrollbar,
+.horizontalScroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -422,7 +429,7 @@ i.circle-selected-onHover .circle-line {
 
 @media only screen and (max-width: 767px) {
   .hero-section .hero-content {
-    justify-content: flex-end !important;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     width: 100%;
@@ -655,7 +662,7 @@ i.circle-selected-onHover .circle-line {
     min-height: 94vw;
   }
   .leafs-section-container .leaf-item .leaf-content {
-    padding: 10% 2.5rem 2.5rem 10%;
+    padding: 1.9rem 1.5rem;
   }
   .leafs-section-container .leaf-item:nth-child(2n-1),
   .leafs-section-container .leaf-item:nth-child(2n-1) img {
@@ -669,7 +676,9 @@ i.circle-selected-onHover .circle-line {
     border-radius: 30% 0 30% 0;
   }
   .leafs-section-container .leaf-item:nth-child(2n) .leaf-showCS {
-    align-self: flex-start;
+    order: -1;
+    margin: 0 0 auto;
+    align-self: flex-end;
   }
   .leafs-section-container .leaf-item .leaf-content {
     opacity: 1;
@@ -829,13 +838,29 @@ i.circle-selected-onHover .circle-line {
 }
 
 .contactForm-section {
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 3.5rem;
   padding: 9rem;
-  background: url("/assets/vectors/contact-bg.svg") center no-repeat;
-  background-size: cover;
+  background: #f9f8f7;
+}
+
+.contactForm-leaf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 88%;
+  margin: auto;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition: all 3s;
+}
+
+.contactForm-leaf.isShown {
+  stroke-dashoffset: 0;
 }
 
 .contactForm-title {
@@ -1169,6 +1194,7 @@ i.circle-selected-onHover .circle-line {
 #footer .footer-bottom .footer-bottom-link {
   font: 300 14px "Poppins";
   color: #ffffff;
+  white-space: nowrap;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1183,17 +1209,20 @@ i.circle-selected-onHover .circle-line {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 2.4rem;
     padding: 0 0.75rem;
   }
   #footer .footer-text {
-    gap: 1.1rem;
+    gap: 1rem;
   }
   #footer .footer-text .footer-text-title {
     font: 500 28px/56px "Poppins";
   }
   #footer .footer-text .footer-text-desc {
     font: italic 400 20px "Poppins";
+  }
+  #footer .footer-text .footer-text-logos {
+    margin-top: 0.6rem;
   }
   #footer .footer-otreeInfo {
     font: 400 16px "Poppins";
@@ -1293,10 +1322,6 @@ i.circle-selected-onHover .circle-line {
 }
 
 #home-hero .hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
   gap: 0rem;
 }
 
@@ -1519,48 +1544,6 @@ i.circle-selected-onHover .circle-line {
   z-index: 1;
 }
 
-#home-caseStudy .leaf-item.onFirstTimeView {
-  position: relative;
-  transform-origin: top;
-  z-index: 1;
-  transform: perspective(1500px) translate(0, -1rem) rotateX(180deg);
-}
-
-#home-caseStudy .leaf-item.onFirstTimeView img {
-  z-index: 1;
-}
-
-#home-caseStudy .leaf-item.onFirstTimeView::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  border-radius: inherit;
-  background: rgba(85, 85, 85, 0.693);
-  backdrop-filter: blur(4px);
-  transition: all 2s;
-}
-
-#home-caseStudy .onFirstTimeView.isShown {
-  animation: unfoldAnime 2s forwards;
-}
-
-#home-caseStudy .onFirstTimeView.isShown::after {
-  opacity: 0;
-}
-
-@keyframes unfoldAnime {
-  100% {
-    transform: translate(0, 0rem) rotateX(0deg);
-  }
-}
-
 @media only screen and (max-width: 800px) {
   #home-caseStudy .caseStudy-title {
     padding: 0 0.5rem;
@@ -1607,6 +1590,7 @@ i.circle-selected-onHover .circle-line {
     row-gap: 2rem;
     min-width: unset;
     max-width: 400px;
+    padding-top: 2.75rem;
   }
   #home-trustedUs .trustedUs-logos img {
     width: 30%;
@@ -1786,6 +1770,7 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  min-height: max-content;
   height: 100vh;
   max-height: 1000px;
   background: #f9f8f7;
@@ -1794,7 +1779,7 @@ i.circle-selected-onHover .circle-line {
 #home-workType .workType-img {
   position: relative;
   width: 46%;
-  min-height: 300px;
+  min-height: 400px;
   height: auto;
   flex-grow: 1;
 }
@@ -1811,7 +1796,7 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10rem;
+  gap: 8.88rem;
   flex-basis: 54%;
   flex-grow: 1;
   padding: 6rem 6.25rem 6rem 4rem;
@@ -1894,8 +1879,8 @@ i.circle-selected-onHover .circle-line {
   #home-workType .workType-content {
     padding: 2.5rem 0.75rem;
     min-width: 64%;
-    height: 100vh;
-    max-height: 900px;
+    height: 100svh;
+    max-height: 750px;
   }
   #home-workType .workType-content::before {
     display: none;
@@ -1911,6 +1896,7 @@ i.circle-selected-onHover .circle-line {
     min-width: unset;
   }
   #home-workType .workType-content .workType-bottom-content .workType-desc {
+    padding-top: 2.25rem;
     font: 400 17px "Poppins";
   }
   #home-workType .workType-content .workType-bottom-content .workType-button {
@@ -2169,6 +2155,7 @@ i.circle-selected-onHover .circle-line {
   }
   #home-ourValues .ourValues-content {
     gap: 2.5rem;
+    padding-bottom: 0;
   }
   #home-ourValues .ourValues-content .value-item {
     width: 100%;
