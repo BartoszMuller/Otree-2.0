@@ -131,25 +131,25 @@
       min-height: unset;
       height: 100svh;
       max-height: 800px;
-      
+
       .structure-content {
         display: flex;
         flex-direction: column;
         gap: 1.6rem;
-    
+
         width: 100%;
         padding: 3rem 0.75rem 2.4rem;
       }
       .structure-title {
         display: flex;
-    
+
         width: max-content;
         flex-grow: 1;
         height: 100%;
         max-height: 50vh;
-    
+
         border-bottom: 1px solid $color-dark;
-    
+
         font: $font-h4-medium;
       }
       .structure-desc {
@@ -163,33 +163,33 @@
   }
 }
 
-#aboutUs-founders{
+#aboutUs-founders {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
 
   min-height: 100vh;
-  
-  .founders-title{
+
+  .founders-title {
     width: 100%;
     font: $font-h4-medium;
     padding: 4.4rem 7.25rem 2rem;
     align-self: flex-end;
   }
-  .founders-images{
+  .founders-images {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     margin: auto;
   }
-  .founder-img{
+  .founder-img {
     width: 50%;
     flex-grow: 1;
     aspect-ratio: 1.35;
     object-fit: cover;
   }
-  .founders-info{
+  .founders-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,44 +202,43 @@
 
     text-align: center;
   }
-  .founders-names{
+  .founders-names {
     font: $font-h5-medium;
   }
-  .founders-readMore{
+  .founders-readMore {
     font: $font-b16-medium;
     transition: color ease 0.5s;
 
-    &:hover{
+    &:hover {
       color: $color-orange;
     }
   }
 
   @media only screen and (max-width: 767px) {
-    &{
+    & {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-    
+
       min-height: 100vh;
-      
-      .founders-title{
+
+      .founders-title {
         width: 100%;
         font: $font-mobile-b24-medium;
         padding: 2.4rem 0.75rem 1.15rem;
       }
-      .founder-img{
+      .founder-img {
         width: 100%;
       }
-      .founders-info{
+      .founders-info {
         padding: 1.5rem 3rem 3.75rem;
       }
-      .founders-names{
+      .founders-names {
         font: $font-mobile-b20-medium;
       }
-      .founders-readMore{
+      .founders-readMore {
         font: $font-mobile-b16-medium;
       }
-
     }
   }
 }

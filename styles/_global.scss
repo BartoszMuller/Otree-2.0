@@ -123,6 +123,11 @@ $font-mobile-montserrat-24-semibold: 600 24px "Montserrat";
 
 $font-h1-gruppo: 3.5rem "Gruppo";
 
+// INDEXES
+$index-menu: 5;
+$index-above-menu: 6;
+$index-top: 10;
+
 ///
 //////
 ///////// GLOBAL //////////
@@ -337,8 +342,8 @@ i.circle-selected-onHover {
 
   padding: 0.625rem 1.5rem;
 
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   background: $color-green-700;
 
   color: $color-dark;
@@ -434,6 +439,7 @@ i.circle-selected-onHover {
   min-height: 100svh;
 
   color: $color-white;
+  overflow: hidden;
 
   // background: url("/assets/images/projectsHero-bg.jpg") center no-repeat fixed;
   // background-size: cover;
@@ -454,71 +460,195 @@ i.circle-selected-onHover {
   padding: 2rem;
 
   .logo {
+    position: relative;
     flex-shrink: 0;
     width: 6.6rem;
+
+    z-index: 6;
   }
 }
 .hero-nav {
   display: flex;
   gap: 3rem;
+}
+.nav-items {
+  display: flex;
 
-  .nav-items {
+  .nav-item {
     display: flex;
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-    }
+    align-items: center;
   }
+}
 
-  .nav-item a {
+.nav-item a {
+  position: relative;
+
+  font: $font-b16-medium;
+  padding: 0.625rem 1.5rem;
+
+  white-space: nowrap;
+  .hover-line {
     position: relative;
-
-    font: $font-b16-medium;
-    padding: 0.625rem 1.5rem;
-
-    white-space: nowrap;
-    .hover-line {
-      position: relative;
-    }
-    .hover-line::after {
-      content: "";
-      position: absolute;
-      bottom: -0.2em;
-      left: 0;
-
-      width: 0;
-      height: 0.2em;
-
-      border-radius: 5rem;
-      background: $color-white;
-      transition: all 0.6s;
-    }
-    &:hover .hover-line::after {
-      width: 100%;
-    }
   }
-  .primaryButton {
-    margin-left: 1rem;
+  .hover-line::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2em;
+    left: 0;
+
+    width: 0;
+    height: 0.2em;
+
+    border-radius: 5rem;
+    background: $color-white;
+    transition: all 0.6s;
+  }
+  &:hover .hover-line::after {
+    width: 100%;
+  }
+}
+.primaryButton {
+  margin-left: 1rem;
+}
+
+.menu-icon {
+  position: relative;
+  z-index: $index-above-menu;
+
+  flex-shrink: 0;
+  padding: 1rem;
+  width: 3.5rem;
+  overflow: visible;
+  cursor: pointer;
+  transition: all 1s;
+
+  > * {
+    transform-origin: center center;
   }
 
-  .menu-icon {
-    flex-shrink: 0;
-    padding: 1rem;
+  // .line2 {
+  //   transition: all 0.35s ease-in-out;
+  //   transform-origin: left;
+  // }
+  // .line3 {
+  //   transform-origin: bottom left;
+  // }
+  .line1 {
+    // opacity: 0;
+    scale: 0;
+    transform: translate(0%, 0%) rotate(45deg);
+  }
+  .line2 {
+    // opacity: 0;
+    scale: 0;
+    transform: translate(0%, 0%) rotate(-45deg);
+  }
+  .line1,
+  .line2 {
+    transition: all 0.25s cubic-bezier(0.83, -0.02, 0, 1.11);
+  }
+  .rec1,
+  .rec3 {
+    transition: scale 1s cubic-bezier(0.17, 0.85, 0, 1.04), transform 1s;
+  }
+  .rec2 {
+    transition: all 1s cubic-bezier(0.38, 0.39, 0.16, 1.06);
+  }
 
-    cursor: pointer;
+  &.isClicked {
+    transform: rotate(360deg);
+    .line1,
+    .line2 {
+      transition: all 1s cubic-bezier(0.82, -0.05, 0, 1.04);
+    }
 
-    img {
-      height: 1rem;
+    .rec1,
+    .rec3 {
+      transition: scale 1s cubic-bezier(0.8, 0, 0.28, 0.66), transform 1s;
+    }
+
+    .line1 {
+      transform: translate(0%, 0%) rotate(45deg);
+      opacity: 1;
+      scale: 1;
+    }
+    .line2 {
+      opacity: 1;
+      scale: 1;
+      transform: translate(0%, 0%) rotate(-45deg);
+    }
+    .rec1 {
+      transform: translate(-14%, 15%) rotate(45deg) scale(0.6);
+      // scale: 0.5;
+    }
+    .rec2 {
+      transition: all 1s;
+      transform: translate(0%, 0%) scale(0);
+    }
+    .rec3 {
+      // scale: 0.5;
+      transform: translate(-12%, -16%) rotate(-45deg) scale(0.6);
     }
   }
 }
+
+.menu-nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: $index-menu;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  padding: 3.75rem 3rem;
+
+  background: rgba(27, 27, 27, 0.653);
+  backdrop-filter: blur(7px);
+
+  opacity: 0.5;
+  transition: all 0.4s ease-out;
+  transform: translateX(100%);
+
+  &.isOpen {
+    right: 0;
+    top: 0;
+
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.menu-nav-items {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 0;
+  gap: 0.75rem;
+
+  padding: 3.4rem 0;
+}
+.menu-nav-item {
+  width: max-content;
+  margin-left: auto;
+  padding: 0.5rem;
+
+  font: $font-b17-regular;
+  cursor: pointer;
+  transition: color 0.5s;
+  color: $color-white;
+
+  &:hover {
+    color: $color-green-700;
+  }
+}
+
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   flex-grow: 1;
   gap: 0.75rem;
+
   padding: 6.5rem 8.37rem;
 }
 .hero-siteName {
@@ -619,6 +749,25 @@ i.circle-selected-onHover {
       margin-right: 0;
     }
   }
+  .menu-nav {
+    width: 100%;
+    padding: 3.75rem 3rem;
+
+    &.isOpen {
+      right: 0;
+      top: 0;
+
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .menu-nav-items {
+    gap: 0;
+    padding: 3.4rem 0;
+  }
+  .menu-nav-item {
+    font: $font-b17-regular;
+  }
 }
 
 //
@@ -676,7 +825,7 @@ i.circle-selected-onHover {
 .companyLeaf {
   &.case1 {
     .leaf-content {
-      padding: 2.5rem; 
+      padding: 2.5rem;
     }
   }
   &.case2 {
@@ -947,8 +1096,19 @@ i.circle-selected-onHover {
 
   padding: 2.5rem 7.15rem 2.15rem;
 
-  overflow-y: hidden;
   overflow-x: scroll;
+
+  scroll-behavior: smooth;
+
+  // Chrome, Safari and Opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  & {
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+  }
   .benefit-item {
     width: 30%;
     max-width: 330px;
@@ -990,7 +1150,7 @@ i.circle-selected-onHover {
   width: 30%;
   flex-grow: 1;
 
-  max-width: 500px;
+  max-width: 550px;
 }
 .workSteps-title {
   font: $font-h5-medium;
@@ -1000,7 +1160,6 @@ i.circle-selected-onHover {
 }
 .workSteps-subtitle {
   font: $font-b16-light-italic;
-  max-width: 370px;
 }
 
 .workSteps-content {
@@ -1095,12 +1254,11 @@ i.circle-selected-onHover {
 .contactForm-leaf {
   position: absolute;
 
-  top: 0;
+  top: 3rem;
   left: 0;
-  bottom: 0;
 
-  height: 88%;
-  margin: auto;
+  max-height: 88%;
+  width: 20%;
 
   stroke-dashoffset: 100;
   stroke-dasharray: 100;
@@ -1283,6 +1441,10 @@ i.circle-selected-onHover {
 
     padding: 2.75rem 0.75rem 3.75rem;
 
+    .contactForm-leaf {
+      display: none;
+    }
+
     .contactForm-title {
       font: $font-mobile-b24-medium;
     }
@@ -1407,7 +1569,7 @@ i.circle-selected-onHover {
     flex-direction: column;
     gap: 1.5rem;
 
-    max-width: 500px;
+    max-width: 550px;
     .footer-text-title {
       font: $font-h2-regular;
     }
@@ -1514,6 +1676,14 @@ i.circle-selected-onHover {
 ///  ANIMATIONS ////
 ///
 ///
+
+// .isCurrentSection > * {
+//   opacity: 1;
+// }
+// section > * {
+//   opacity: 0;
+//   transition: opacity 0.5s ease-in-out;
+// }
 
 .rowWave > * {
   opacity: 0;

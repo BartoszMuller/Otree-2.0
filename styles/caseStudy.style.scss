@@ -23,18 +23,33 @@
   }
 }
 
-
 //////////
 ///
 ///
 
 #caseStudy-sequence {
+  position: relative;
   justify-content: space-between;
   gap: 7.1rem;
 
   padding-top: 10.75rem;
   padding-bottom: 10.75rem;
   background: $color-gray-500;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 3rem;
+    height: 84%;
+
+    border-top-right-radius: 3rem;
+    border-top: 1px solid $color-gray-800;
+    border-right: 1px solid $color-gray-800;
+  }
   .sequence-item {
     display: flex;
     gap: 3rem;
@@ -90,6 +105,10 @@
       padding-top: 3.5rem;
       padding-bottom: 4.5rem;
       background: $color-gray-500;
+
+      &::before {
+        display: none;
+      }
       .sequence-item {
         flex-direction: column;
         gap: 1.5rem;
@@ -134,6 +153,7 @@
   padding-bottom: 7rem;
 
   background: $color-green-700;
+
   .process-title {
   }
   .process-list {
@@ -145,13 +165,15 @@
   }
   .process-item {
     flex-shrink: 0;
-    width: 30%;
     min-width: 280px;
-    max-width: 500px;
+    max-width: 360px;
   }
   .process-name {
     font: $font-b20-medium;
     padding-bottom: 1rem;
+    padding-right: 5rem;
+    white-space: nowrap;
+    width: max-content;
   }
   .process-desc {
     padding-right: 5rem;
@@ -216,7 +238,7 @@
 #caseStudy-success {
   gap: 3.1rem;
 
-  padding-top: 7rem;
+  padding-top: 5rem;
   padding-bottom: 7.75rem;
   .success-title {
     width: auto;
@@ -251,14 +273,14 @@
       //   0%/400%;
       // background-position: -35%;
       background: linear-gradient(
-        90deg,
-        $color-orange,
-        $color-light-orange 50%,
-        $color-white 75%,
-        $color-white 100%
-      )
-      0%/400%;
-    background-position: -35%;
+          90deg,
+          $color-orange,
+          $color-light-orange 50%,
+          $color-white 75%,
+          $color-white 100%
+        )
+        0%/400%;
+      background-position: -35%;
       transition: all 1s;
 
       &:hover {

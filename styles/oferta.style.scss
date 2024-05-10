@@ -1,8 +1,8 @@
-@import '_global';
+@import "_global";
 
 //// checkWindowCurrencyScript
-.isCurrentWindow{
-  .circle-line{
+.isCurrentWindow {
+  .circle-line {
     stroke-dashoffset: 0 !important;
   }
 }
@@ -11,14 +11,14 @@
   .hero-desc {
     max-width: 650px;
   }
-  .hero-subtitle{
+  .hero-subtitle {
     padding: 0.75rem 0 0.25rem;
   }
   @media only screen and (max-width: 767px) {
-    .hero-siteName{
+    .hero-siteName {
       padding-bottom: 0.5rem;
     }
-    .hero-desc{
+    .hero-desc {
       display: none;
     }
   }
@@ -97,6 +97,10 @@
 
 #offer-design {
   background: $color-green-700;
+
+  .design-subtitle {
+    max-width: 270px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -110,6 +114,9 @@
   background: $color-orange;
   color: $color-dark;
 
+  .implement-subtitle {
+    max-width: 300px;
+  }
   .implement-steps {
     .workStep-item::before {
       background: $color-dark;

@@ -16,10 +16,16 @@
       rel="stylesheet"
     />
 
-    <!-- jQuery Scrollorama -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="ścieżka/do/superscrollorama.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -30,7 +36,7 @@
           alt="hero background"
         />
         <header class="hero-header">
-          <a href="/index.html" class="logo"
+          <a href="/" class="logo"
             ><img src="/assets/logos/logo-otree.svg" alt="Otree logo"
           /></a>
           <nav class="hero-nav">
@@ -52,8 +58,66 @@
                 <a href="#" class="primaryButton">Zapytaj o projekt</a>
               </li>
             </ul>
-            <div class="menu-icon">
-              <img src="assets/icons/menu.svg" alt="menu icon" />
+
+            <svg
+              id="menu-button"
+              class="menu-icon"
+              viewBox="0 0 21 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="rec1"
+                d="M0 3C0 1.34315 1.34315 0 3 0H21V0C21 1.65685 19.6569 3 18 3H0V3Z"
+                fill="white"
+              />
+              <path
+                class="rec2"
+                d="M0 9C0 7.34315 1.34315 6 3 6H21V6C21 7.65685 19.6569 9 18 9H0V9Z"
+                fill="white"
+              />
+              <path
+                class="rec3"
+                d="M0 15C0 13.3431 1.34315 12 3 12H21V12C21 13.6569 19.6569 15 18 15H0V15Z"
+                fill="white"
+              />
+              <path
+                class="line1"
+                d="M2.00195 7.79688L18.9994 7.50018"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                class="line2"
+                d="M2 7.64648H19"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+
+            <div id="menu-nav" class="menu-nav">
+              <ul class="menu-nav-items">
+                <li class="menu-nav-item showOnMobile">
+                  <a href="/blog.html">Realizacje</a>
+                </li>
+                <li class="menu-nav-item showOnMobile">
+                  <a href="/kariera.html">Oferta</a>
+                </li>
+                <li class="menu-nav-item showOnMobile">
+                  <a href="">O nas</a>
+                </li>
+                <li class="menu-nav-item">
+                  <a href="/blog.html">Blog</a>
+                </li>
+                <li class="menu-nav-item">
+                  <a href="/kariera.html">Kariera</a>
+                </li>
+                <li class="menu-nav-item">
+                  <a href="">Kontakt</a>
+                </li>
+              </ul>
             </div>
           </nav>
         </header>
@@ -153,15 +217,13 @@
         <div class="background-lines hideOnMobile">
           <div class="line-1"></div>
         </div>
-        <div>
-          <h2 class="caseStudy-title">
-            <u class="circle-selected-gray">Kreatywność i wiedza</u>
-            <span
-              >branżowa<br />
-              w jednym projekcie</span
-            >
-          </h2>
-        </div>
+        <h2 class="caseStudy-title">
+          <u class="circle-selected-gray">Kreatywność i wiedza</u>
+          <span
+            >branżowa<br />
+            w jednym projekcie</span
+          >
+        </h2>
         <div class="leafs-container">
           <div class="leaf-item case1 companyLeaf">
             <img
@@ -270,8 +332,28 @@
       </section>
 
       <section id="home-howWeWork" class="section-container">
-        <div class="howWeWork-list">
+        <div class="howWeWork-list rowWave">
           <a href="#" class="howWeWork-item onWindowCurrency">
+            <svg
+              class="unfold-button"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="line1"
+                d="M11.002 1L11.002 21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M1 10.999H21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
             <div class="howWeWork-name">
               <h4 class="title">
                 <i class="circle-selected-onHover">
@@ -342,6 +424,26 @@
             </p>
           </a>
           <a href="#" class="howWeWork-item onWindowCurrency">
+            <svg
+              class="unfold-button"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="line1"
+                d="M11.002 1L11.002 21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M1 10.999H21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
             <div class="howWeWork-name">
               <h4 class="title">
                 <i class="circle-selected-onHover"
@@ -368,7 +470,7 @@
               </p>
             </div>
 
-            <div class="howWeWork-desc">
+            <p class="howWeWork-desc">
               Tworzymy interfejsy, które nie tylko przyciągają wzrok, ale także
               zapewniają płynne,
               <strong>przyjemne i intuicyjne doświadczenia</strong> dla
@@ -401,9 +503,29 @@
                   stroke-linecap="round"
                 />
               </svg>
-            </div>
+            </p>
           </a>
           <a href="#" class="howWeWork-item onWindowCurrency">
+            <svg
+              class="unfold-button"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                class="line1"
+                d="M11.002 1L11.002 21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+              <path
+                d="M1 10.999H21"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
             <div class="howWeWork-name">
               <h4 class="title">
                 <i class="circle-selected-onHover"
@@ -430,7 +552,7 @@
               </p>
             </div>
 
-            <div class="howWeWork-desc">
+            <p class="howWeWork-desc">
               Pomagamy <strong>w skutecznym wdrożeniu</strong> rozwiązań,
               zapewniając Twojej firmie wsparcie na każdym etapie procesu.
               Realizujemy projekty w technologiach: PrestaShop, ONe,
@@ -465,7 +587,7 @@
                   stroke-linecap="round"
                 />
               </svg>
-            </div>
+            </p>
           </a>
         </div>
       </section>
@@ -862,9 +984,22 @@
         id="home-contactForm"
         class="contactForm-section section-container"
       >
-      <svg class="contactForm-leaf onFirstTimeView" viewBox="0 0 370 632" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path pathLength="100" d="M-18.627 244.839C-33.3623 141.278 38.6549 45.3244 142.281 30.6004L340.575 2.42534C355.792 105.224 284.616 200.892 181.709 215.805L-18.627 244.839Z" stroke="#60DC74"/>
-        <path pathLength="100" d="M165.037 630.841C60.4337 630.571 -24.1987 545.536 -23.9079 440.87L-23.3515 240.585C80.5671 240.269 165.037 324.43 165.037 428.412V630.841Z" stroke="#60DC74"/>
+        <svg
+          class="contactForm-leaf onFirstTimeView"
+          viewBox="0 0 370 632"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            pathLength="100"
+            d="M-18.627 244.839C-33.3623 141.278 38.6549 45.3244 142.281 30.6004L340.575 2.42534C355.792 105.224 284.616 200.892 181.709 215.805L-18.627 244.839Z"
+            stroke="#60DC74"
+          />
+          <path
+            pathLength="100"
+            d="M165.037 630.841C60.4337 630.571 -24.1987 545.536 -23.9079 440.87L-23.3515 240.585C80.5671 240.269 165.037 324.43 165.037 428.412V630.841Z"
+            stroke="#60DC74"
+          />
         </svg>
         <h2 class="contactForm-title">
           Chcielibyśmy razem zbudować coś niesamowitego.<br />
@@ -1084,6 +1219,7 @@
     <script type="module" src="/scripts/clientsQuotesScript.js"></script>
     <script src="/scripts/textTypingScript.js"></script>
     <script src="/scripts/autoResize.js"></script>
-    <script src="/scripts/jquery/scrollorama.js"></script>
+    <script src="/scripts/jquery/scrollmagic.js"></script>
+    <script src="/scripts/events.js"></script>
   </body>
 </html>

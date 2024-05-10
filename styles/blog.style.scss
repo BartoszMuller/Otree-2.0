@@ -1,6 +1,9 @@
 @import "_global";
-
-
+#blog-header {
+  .hover-line::after {
+    background: $color-dark;
+  }
+}
 #blog {
   position: relative;
   display: flex;
@@ -8,6 +11,8 @@
   gap: 2.62rem;
 
   padding: 5.7rem 8.75rem;
+
+  background: $color-gray-400;
 
   &::before {
     content: url("/assets/vectors/dawn.svg");
@@ -71,6 +76,23 @@
       }
     }
   }
+
+  .post-img {
+    position: relative;
+    width: 100%;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+
+      width: 100%;
+      height: 100%;
+      border-radius: 0.65rem;
+
+      object-fit: cover;
+    }
+  }
   .post-tags {
     transition: all 1s;
     position: relative;
@@ -84,24 +106,11 @@
     }
   }
 
-  .post-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-
-    width: 100%;
-    height: 100%;
-    border-radius: 0.65rem;
-
-    object-fit: cover;
-  }
   .post-title {
     font: $font-b19-semibold;
   }
   .post-desc {
     font: $font-b15-light;
-    text-align: justify;
   }
   .post-readMore {
     width: max-content;
@@ -119,6 +128,7 @@
     gap: 1rem;
 
     width: 94%;
+    margin: auto;
   }
   .posts-number {
     font: $font-b16-light;
@@ -149,7 +159,7 @@
 
     transition: all ease 0.7s;
 
-    &:hover{
+    &:hover {
       background: $color-dark;
       color: $color-white;
     }

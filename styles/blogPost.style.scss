@@ -81,20 +81,19 @@ body {
     gap: 4rem;
 
     width: 100%;
-    
+
     font: $font-b18-regular;
 
-    &:last-child{
+    &:last-child {
       padding-bottom: 12.5rem;
     }
     &.gray {
       background: $color-gray-500;
     }
     &.summary {
-
       background: $color-orange;
       color: $color-white;
-      section{
+      section {
         padding-top: 5.25rem;
 
         > *:first-child {
@@ -159,8 +158,6 @@ body {
       font-weight: 600;
     }
     ol {
-
-      
       display: flex;
       flex-direction: column;
       gap: 2.75rem;
@@ -205,7 +202,6 @@ body {
       margin-left: 7.25rem;
       margin-bottom: 4rem;
       padding-top: 4rem;
-
 
       &:not(:first-child) {
         border-top: 1px solid $color-gray-500;

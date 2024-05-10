@@ -32,14 +32,13 @@
 
     &.offer-top {
       flex-grow: 1;
-      
     }
     &.offer-position {
       display: flex;
       justify-content: flex-end;
       gap: 2.25rem;
       flex-grow: 1;
-    } 
+    }
     &.offer-bottom {
       justify-content: space-between;
       flex-grow: 5;
@@ -123,7 +122,7 @@
       display: flex;
       gap: 4rem;
       width: 100%;
-  
+
       &.offer-top {
         flex-grow: 1;
         justify-content: space-between;
@@ -133,7 +132,7 @@
         justify-content: flex-start;
         gap: 2.25rem;
         flex-grow: 1;
-      } 
+      }
       &.offer-bottom {
         justify-content: space-between;
         flex-grow: 5;
@@ -215,7 +214,7 @@
         margin-bottom: 2rem;
       }
       .design-desc {
-        margin-bottom: 3.25rem;
+        margin-bottom: 0.75rem;
         font: $font-mobile-b17-regular;
       }
       .design-subdesc {
@@ -317,27 +316,105 @@
     overflow: visible;
   }
 
-  // Klientocentrycznosc
+  // Samodzielność
   .value-icon-1 {
-    > * {
+    * {
+      transform-origin: center;
       transition: all 1s;
     }
-    .circle {
-    }
-    .dot2 {
-      transform: translate(30px, 30px) scale(0);
+    .white-circle {
+      transform-origin: center center;
     }
   }
   .value-item:hover .value-icon-1 {
     > * {
+      transform: rotate(90deg);
     }
-    .circle {
+    .white-circle {
+      transform: scale(3.1);
     }
-    .dot1 {
-      transform: translate(-37px, -37px) scale(2.2);
+    .circle1 {
+      transform: translateY(-15%);
     }
-    .dot2 {
-      transform: translate(0, 0) scale(1);
+    .circle2 {
+      transform: translateX(-15%);
+    }
+    .circle3 {
+      transform: translateX(15%);
+    }
+    .circle4 {
+      transform: translateY(15%);
+    }
+  }
+
+  // Rozwój
+  .value-icon-2 {
+    * {
+      transform-origin: center;
+      transition: all 1s;
+    }
+    .line2 {
+      transform: translate(30%) scale(0.5, 0.75);
+    }
+    .arrow {
+      transform: translate(40%);
+    }
+  }
+  .value-item:hover .value-icon-2 {
+    .line1 {
+      stroke-dasharray: 100;
+    }
+  }
+
+  // Zaufanie
+  .value-icon-3 {
+    * {
+      transition: all 1s;
+      transform-origin: center center;
+    }
+
+    .heart2 {
+      transform: translate(0) scale(0.8);
+    }
+  }
+  .value-item:hover .value-icon-3 {
+    .heart2 {
+      transform: translate(-23%, -17%) scale(1.2);
+    }
+  }
+
+  // Zaufanie
+  .value-icon-4 {
+    * {
+      transition: all 1s;
+      transform-origin: center center;
+    }
+
+    .line1 {
+    }
+    .line2 {
+    }
+
+    .circle1 {
+      transition: all 1s cubic-bezier(0.67, -0.73, 0.43, 1.91);
+    }
+    .circle2 {
+      transition: all 1.2s cubic-bezier(1, -0.18, 0.53, 1.38);
+    }
+
+    .circle3 {
+      transition: all 1.3s cubic-bezier(1, -0.18, 0.55, 2.09);
+    }
+  }
+  .value-item:hover .value-icon-4 {
+    .circle1 {
+      transform: scale(1.1);
+    }
+    .circle2 {
+      transform: scale(1.3);
+    }
+    .circle3 {
+      transform: scale(1.2);
     }
   }
 
@@ -370,15 +447,17 @@
 
   .apply-steps {
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    gap: 10rem;
+    gap: 4rem;
     margin: auto;
-    padding-top: 6.3rem;
+    padding: 6.25rem 6.25rem 0;
     overflow-x: scroll;
+    max-width: 1400px;
   }
   .applyStep-item {
     display: flex;
-    width: 20rem;
+    min-width: 8.25rem;
     flex-direction: column;
     align-items: baseline;
   }
@@ -386,6 +465,7 @@
     width: 6rem;
     height: 6rem;
   }
+
   .applyStep-number {
     font: $font-b16-regular;
     white-space: nowrap;
@@ -448,8 +528,17 @@
     min-width: 215px;
   }
   .benefit-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 6.25rem;
     height: 6.25rem;
+    object-fit: contain;
+
+    padding: 1rem;
+    border: 1px solid $color-dark;
+    border-radius: 50%;
   }
   .benefit-name {
     font: $font-b18-regular;

@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const elementsToCheck = [...document.querySelectorAll(".rowWave > *")];
-  console.log(elementsToCheck);
+  
   let currentHeight = undefined;
   let counter = 0;
+
   elementsToCheck.forEach((currentElement) => {
-    console.log(currentElement);
     const onScrollSection = () => {
       const elementOffset = currentElement.getBoundingClientRect();
       const viewPoint = window.innerHeight / 1.3;

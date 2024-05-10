@@ -204,8 +204,8 @@ i.circle-selected-onHover .circle-line {
 .primaryButton {
   all: unset;
   padding: 0.625rem 1.5rem;
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   background: #6ef083;
   color: #1e1e1e;
   white-space: nowrap;
@@ -275,6 +275,7 @@ i.circle-selected-onHover .circle-line {
   min-height: 100vh;
   min-height: 100svh;
   color: #ffffff;
+  overflow: hidden;
 }
 
 .hero-background {
@@ -293,8 +294,10 @@ i.circle-selected-onHover .circle-line {
 }
 
 .hero-header .logo {
+  position: relative;
   flex-shrink: 0;
   width: 6.6rem;
+  z-index: 6;
 }
 
 .hero-nav {
@@ -302,27 +305,27 @@ i.circle-selected-onHover .circle-line {
   gap: 3rem;
 }
 
-.hero-nav .nav-items {
+.nav-items {
   display: flex;
 }
 
-.hero-nav .nav-items .nav-item {
+.nav-items .nav-item {
   display: flex;
   align-items: center;
 }
 
-.hero-nav .nav-item a {
+.nav-item a {
   position: relative;
   font: 500 16px "Poppins";
   padding: 0.625rem 1.5rem;
   white-space: nowrap;
 }
 
-.hero-nav .nav-item a .hover-line {
+.nav-item a .hover-line {
   position: relative;
 }
 
-.hero-nav .nav-item a .hover-line::after {
+.nav-item a .hover-line::after {
   content: "";
   position: absolute;
   bottom: -0.2em;
@@ -334,22 +337,134 @@ i.circle-selected-onHover .circle-line {
   transition: all 0.6s;
 }
 
-.hero-nav .nav-item a:hover .hover-line::after {
+.nav-item a:hover .hover-line::after {
   width: 100%;
 }
 
-.hero-nav .primaryButton {
+.primaryButton {
   margin-left: 1rem;
 }
 
-.hero-nav .menu-icon {
+.menu-icon {
+  position: relative;
+  z-index: 6;
   flex-shrink: 0;
   padding: 1rem;
+  width: 3.5rem;
+  overflow: visible;
   cursor: pointer;
+  transition: all 1s;
 }
 
-.hero-nav .menu-icon img {
-  height: 1rem;
+.menu-icon > * {
+  transform-origin: center center;
+}
+
+.menu-icon .line1 {
+  scale: 0;
+  transform: translate(0%, 0%) rotate(45deg);
+}
+
+.menu-icon .line2 {
+  scale: 0;
+  transform: translate(0%, 0%) rotate(-45deg);
+}
+
+.menu-icon .line1,
+.menu-icon .line2 {
+  transition: all 0.25s cubic-bezier(0.83, -0.02, 0, 1.11);
+}
+
+.menu-icon .rec1,
+.menu-icon .rec3 {
+  transition: scale 1s cubic-bezier(0.17, 0.85, 0, 1.04), transform 1s;
+}
+
+.menu-icon .rec2 {
+  transition: all 1s cubic-bezier(0.38, 0.39, 0.16, 1.06);
+}
+
+.menu-icon.isClicked {
+  transform: rotate(360deg);
+}
+
+.menu-icon.isClicked .line1,
+.menu-icon.isClicked .line2 {
+  transition: all 1s cubic-bezier(0.82, -0.05, 0, 1.04);
+}
+
+.menu-icon.isClicked .rec1,
+.menu-icon.isClicked .rec3 {
+  transition: scale 1s cubic-bezier(0.8, 0, 0.28, 0.66), transform 1s;
+}
+
+.menu-icon.isClicked .line1 {
+  transform: translate(0%, 0%) rotate(45deg);
+  opacity: 1;
+  scale: 1;
+}
+
+.menu-icon.isClicked .line2 {
+  opacity: 1;
+  scale: 1;
+  transform: translate(0%, 0%) rotate(-45deg);
+}
+
+.menu-icon.isClicked .rec1 {
+  transform: translate(-14%, 15%) rotate(45deg) scale(0.6);
+}
+
+.menu-icon.isClicked .rec2 {
+  transition: all 1s;
+  transform: translate(0%, 0%) scale(0);
+}
+
+.menu-icon.isClicked .rec3 {
+  transform: translate(-12%, -16%) rotate(-45deg) scale(0.6);
+}
+
+.menu-nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 3.75rem 3rem;
+  background: rgba(27, 27, 27, 0.653);
+  backdrop-filter: blur(7px);
+  opacity: 0.5;
+  transition: all 0.4s ease-out;
+  transform: translateX(100%);
+}
+
+.menu-nav.isOpen {
+  right: 0;
+  top: 0;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.menu-nav-items {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 0;
+  gap: 0.75rem;
+  padding: 3.4rem 0;
+}
+
+.menu-nav-item {
+  width: max-content;
+  margin-left: auto;
+  padding: 0.5rem;
+  font: 400 17px/29px "Poppins";
+  cursor: pointer;
+  transition: color 0.5s;
+}
+
+.menu-nav-item:hover {
+  color: #6ef083;
 }
 
 .hero-content {
@@ -453,6 +568,23 @@ i.circle-selected-onHover .circle-line {
   }
   .hero-section .hero-bottom {
     margin-right: 0;
+  }
+  .menu-nav {
+    width: 100%;
+    padding: 3.75rem 3rem;
+  }
+  .menu-nav.isOpen {
+    right: 0;
+    top: 0;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .menu-nav-items {
+    gap: 0;
+    padding: 3.4rem 0;
+  }
+  .menu-nav-item {
+    font: 400 17px/29px "Poppins";
   }
 }
 
@@ -715,8 +847,17 @@ i.circle-selected-onHover .circle-line {
   justify-content: space-between;
   gap: 3rem;
   padding: 2.5rem 7.15rem 2.15rem;
-  overflow-y: hidden;
   overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.benefits-section-container::-webkit-scrollbar {
+  display: none;
+}
+
+.benefits-section-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .benefits-section-container .benefit-item {
@@ -754,7 +895,7 @@ i.circle-selected-onHover .circle-line {
 .workSteps-top {
   width: 30%;
   flex-grow: 1;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 .workSteps-title {
@@ -766,7 +907,6 @@ i.circle-selected-onHover .circle-line {
 
 .workSteps-subtitle {
   font: italic 300 16px "Poppins";
-  max-width: 370px;
 }
 
 .workSteps-content {
@@ -849,11 +989,10 @@ i.circle-selected-onHover .circle-line {
 
 .contactForm-leaf {
   position: absolute;
-  top: 0;
+  top: 3rem;
   left: 0;
-  bottom: 0;
-  height: 88%;
-  margin: auto;
+  max-height: 88%;
+  width: 20%;
   stroke-dashoffset: 100;
   stroke-dasharray: 100;
   transition: all 3s;
@@ -1027,6 +1166,9 @@ i.circle-selected-onHover .circle-line {
     gap: 3.5rem;
     padding: 2.75rem 0.75rem 3.75rem;
   }
+  .contactForm-section .contactForm-leaf {
+    display: none;
+  }
   .contactForm-section .contactForm-title {
     font: 500 24px "Poppins";
   }
@@ -1135,7 +1277,7 @@ i.circle-selected-onHover .circle-line {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 500px;
+  max-width: 550px;
 }
 
 #footer .footer-text .footer-text-title {
@@ -1668,8 +1810,10 @@ i.circle-selected-onHover .circle-line {
   padding: 3.25rem 0 0 2.5rem;
 }
 
-#home-howWeWork .howWeWork-item:hover svg > * {
-  stroke-dashoffset: 0 !important;
+@media only screen and (min-width: 768px) {
+  #home-howWeWork .howWeWork-item:hover svg > * {
+    stroke-dashoffset: 0;
+  }
 }
 
 #home-howWeWork .howWeWork-item:first-child {
@@ -1681,7 +1825,8 @@ i.circle-selected-onHover .circle-line {
   border-bottom: solid 0.02em #d1d1d1;
 }
 
-#home-howWeWork .howWeWork-item .howWeWork-name {
+#home-howWeWork .howWeWork-name {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1689,16 +1834,16 @@ i.circle-selected-onHover .circle-line {
   width: 50%;
 }
 
-#home-howWeWork .howWeWork-item .howWeWork-name .title {
+#home-howWeWork .howWeWork-name .title {
   font: 600 24px/37px "Poppins";
 }
 
-#home-howWeWork .howWeWork-item .howWeWork-name .subtitle {
+#home-howWeWork .howWeWork-name .subtitle {
   font: 300 16px "Poppins";
   font-style: italic;
 }
 
-#home-howWeWork .howWeWork-item .howWeWork-desc {
+#home-howWeWork .howWeWork-desc {
   position: relative;
   flex-grow: 1;
   min-width: 360px;
@@ -1706,9 +1851,10 @@ i.circle-selected-onHover .circle-line {
   max-width: 800px;
   padding-right: 4.5rem;
   font: 400 16px "Poppins";
+  transition: all 1s;
 }
 
-#home-howWeWork .howWeWork-item .green-circle-arrow {
+#home-howWeWork .green-circle-arrow {
   position: absolute;
   top: 0.2rem;
   right: 0;
@@ -1716,53 +1862,83 @@ i.circle-selected-onHover .circle-line {
   height: 3.5rem;
 }
 
-#home-howWeWork .howWeWork-item .green-circle-arrow > * {
+#home-howWeWork .green-circle-arrow > * {
   transition: all ease 1s;
 }
 
-#home-howWeWork .howWeWork-item .green-circle-arrow .circle {
+#home-howWeWork .green-circle-arrow .circle {
   stroke-dasharray: 305%;
   stroke-dashoffset: 305%;
 }
 
-#home-howWeWork .howWeWork-item .green-circle-arrow .arrow1 {
+#home-howWeWork .green-circle-arrow .arrow1 {
   stroke-dasharray: 115%;
   stroke-dashoffset: 115%;
 }
 
-#home-howWeWork .howWeWork-item .green-circle-arrow .arrow2 {
+#home-howWeWork .green-circle-arrow .arrow2 {
   stroke-dasharray: 43%;
   stroke-dashoffset: 43%;
+}
+
+#home-howWeWork .unfold-button {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  z-index: 2;
+  width: 3.5rem;
+  padding: 1rem;
+}
+
+#home-howWeWork .unfold-button .line1 {
+  transition: all 0.5s;
+  transform-origin: center;
+  rotate: 90deg;
+}
+
+#home-howWeWork .isHidden .line1 {
+  rotate: 0deg;
 }
 
 @media only screen and (max-width: 767px) {
   #home-howWeWork {
     padding: 0.5rem 2.1rem 0;
   }
-  #home-howWeWork .isCurrentWindow svg > * {
+  #home-howWeWork .howWeWork-list .howWeWork-item {
+    padding: 3.25rem 0 4.25rem;
+  }
+  #home-howWeWork .howWeWork-list .howWeWork-item:not(.isHidden) svg > * {
     stroke-dashoffset: 0 !important;
   }
-  #home-howWeWork .howWeWork-list .howWeWork-item {
-    padding: 3.25rem 0 8rem;
-  }
-  #home-howWeWork .howWeWork-list .howWeWork-item .howWeWork-name {
+  #home-howWeWork .howWeWork-list .howWeWork-name {
     width: 80%;
     font: 600 24px "Poppins";
   }
-  #home-howWeWork .howWeWork-list .howWeWork-item .howWeWork-name .sub-title {
+  #home-howWeWork .howWeWork-list .howWeWork-name .sub-title {
     font: 300 16px "Poppins";
   }
-  #home-howWeWork .howWeWork-list .howWeWork-item .howWeWork-desc {
+  #home-howWeWork .howWeWork-list .howWeWork-desc {
     font: 400 17px "Poppins";
+    padding-top: 7.65rem;
     padding-right: 0;
+    padding-bottom: 5rem;
     min-width: unset;
+    overflow: hidden;
   }
-  #home-howWeWork .howWeWork-list .howWeWork-item .howWeWork-desc .green-circle-arrow {
-    position: absolute;
-    top: unset;
-    bottom: -4.5rem;
-    right: 0;
+  #home-howWeWork .howWeWork-list .howWeWork-desc .green-circle-arrow {
+    position: static;
+    margin-top: 0.75rem;
+    margin-left: auto;
     transition: all 0.6s;
+  }
+  #home-howWeWork .howWeWork-list .unfold-button {
+    display: block;
+  }
+  #home-howWeWork .howWeWork-list .isHidden .howWeWork-desc {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 0 !important;
   }
 }
 
